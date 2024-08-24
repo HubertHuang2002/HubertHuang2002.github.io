@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Hubert Huang</title>
+    <link>http://HubertHuang2002.github.io/posts/</link>
+    <description>Recent content in Posts on Hubert Huang</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://HubertHuang2002.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project: Automating the Attendance System</title>
+      <link>http://HubertHuang2002.github.io/posts/project1/</link>
+      <pubDate>Fri, 23 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/posts/project1/</guid>
+      <description>Due to some information in this project being confidential, the complete source code will not be disclosed.&#xA;Background of the Issue Link to heading My internship company (hereinafter referred to as Company A) has outsourced its cleaning and security services to two different companies: Company B for cleaning and Company C for security. Both the cleaning staff and security personnel work different shifts, such as morning, evening, or night, with separate schedules for weekdays and weekends.</description>
+    </item>
+    <item>
+      <title>Article: The BA Summer Camp</title>
+      <link>http://HubertHuang2002.github.io/posts/article2/</link>
+      <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/posts/article2/</guid>
+      <description>Introduction to the BA Summer Camp Link to heading &amp;ldquo;The BA Summer Camp&amp;rdquo; stands for &amp;ldquo;the Business Administration Summer Camp&amp;rdquo;, and it is specifically organized for Taiwanese high school students to learn about business administration and related fields.&#xA;The Camp&amp;rsquo;s Curriculum and Content Link to heading As mentioned earlier, our primary goal is to introduce high school students to the field of business administration. Therefore, the curriculum focuses on the five key areas of business administration:</description>
+    </item>
+    <item>
+      <title>Article: Introduction to NTU BA</title>
+      <link>http://HubertHuang2002.github.io/posts/article1/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/posts/article1/</guid>
+      <description>In the following article, we use “NTU BA” to refer to the department of Business Administration at National Taiwan University.&#xA;A Brief Introduction to NTU BA Link to heading NTU BA is affiliated with the College of Management at National Taiwan University. Our curriculum includes foundational business courses such as calculus, statistics, economics, accounting, and financial management. We also offer unique courses compared to other departments in the College of Management, such as marketing management, strategic management, and management science model.</description>
+    </item>
+  </channel>
+</rss>

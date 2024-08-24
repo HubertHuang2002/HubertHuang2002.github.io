@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Project: Automating the Attendance System · Hubert Huang
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Hubert Huang">
+<meta name="description" content="This is a project introduction about automating the attendance system.">
+<meta name="keywords" content="blog,NTU,BA">
+<meta name="fediverse:creator" content="" />
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Project: Automating the Attendance System">
+  <meta name="twitter:description" content="This is a project introduction about automating the attendance system.">
+
+<meta property="og:url" content="http://HubertHuang2002.github.io/posts/project1/">
+  <meta property="og:site_name" content="Hubert Huang">
+  <meta property="og:title" content="Project: Automating the Attendance System">
+  <meta property="og:description" content="This is a project introduction about automating the attendance system.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-08-23T00:00:00+00:00">
+    <meta property="article:tag" content="Project">
+    <meta property="article:tag" content="Internship">
+    <meta property="article:tag" content="Python">
+
+
+
+
+<link rel="canonical" href="http://HubertHuang2002.github.io/posts/project1/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.07092c1350ffd254998dc43a44ae96e617d14af4df4602626878df89189c5e1a.css" integrity="sha256-BwksE1D/0lSZjcQ6RK6W5hfRSvTfRgJiaHjfiRicXho=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="http://HubertHuang2002.github.io/">
+      Hubert Huang
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://HubertHuang2002.github.io/posts/project1/">
+              Project: Automating the Attendance System
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2024-08-23T00:00:00Z">
+                August 23, 2024
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              10-minute read
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa-solid fa-user" aria-hidden="true"></i>
+    <a href="/authors/hubert-huang/">Hubert Huang</a></div>
+
+          <div class="categories">
+  <i class="fa-solid fa-folder" aria-hidden="true"></i>
+    <a href="/categories/project/">Project</a></div>
+
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/project/">Project</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/internship/">Internship</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/python/">Python</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p>Due to some information in this project being confidential, the complete source code
+will not be disclosed.</p>
+<h2 id="background-of-the-issue">
+  Background of the Issue
+  <a class="heading-link" href="#background-of-the-issue">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>My internship company (hereinafter referred to as Company A) has outsourced its cleaning and security services to two different companies: Company B for <strong>cleaning</strong> and Company C for <strong>security</strong>. Both the cleaning staff and security personnel work different shifts, such as morning, evening, or night, with separate schedules for weekdays and weekends.</p>
+<p><img src="/images/automation01.png"></p>
+<p>Company A&rsquo;s management department&rsquo;s partial daily workflow is shown in the diagram below:</p>
+<p><img src="/images/automation02.png"></p>
+<p>Due to the different and complex shifts for cleaning and security personnel, calculating attendance status daily is very time-consuming.</p>
+<p>Given the <strong>high level of repetition</strong> in the aforementioned calculation process and the frequent errors in <strong>manual calculations</strong>, I will use programming languages to automate it.</p>
+<h2 id="primary-tools-used">
+  Primary Tools Used
+  <a class="heading-link" href="#primary-tools-used">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>This project primarily uses <strong>Python</strong> as the main programming language, utilizing the <strong>Datetime</strong> module for time format conversions and calculations, and the <strong>Pandas</strong> module for handling interactions between Excel, .CSV files, and data operations.</p>
+<h2 id="main-workflow">
+  Main Workflow
+  <a class="heading-link" href="#main-workflow">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>The main process will be divided into the following steps:</p>
+<ol>
+<li><strong>Access raw data</strong></li>
+<li><strong>Shift data configuration</strong></li>
+<li><strong>Determine the clock-in and clock-out times for each record</strong></li>
+<li><strong>Calculate attendance status</strong></li>
+<li><strong>Output calculation results</strong></li>
+</ol>
+<h4 id="step1-access-raw-data">
+  Step1: Access raw data
+  <a class="heading-link" href="#step1-access-raw-data">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>The .CSV file format of the raw data is similar to the image below.</p>
+<p><img src="/images/automation03.png"></p>
+<p>Since employees at Company B frequently work in shifts for others, the raw data does not label the shift type for Company B&rsquo;s records.</p>
+<p>We first import the necessary <strong>&ldquo;pandas&rdquo;</strong> and <strong>&ldquo;datetime&rdquo;</strong> modules, then set the <strong>&ldquo;today_str&rdquo;</strong> variable based on the date input by the user, and use <strong>&ldquo;today_str&rdquo;</strong> to read the corresponding raw data <strong>&quot;.csv&quot;</strong> file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">datetime</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">today_str</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;Date to be checked:&#34;</span><span class="p">)</span>  <span class="c1"># Format: YYYY/MM/DD</span>
+</span></span><span class="line"><span class="cl"><span class="n">today_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">today_str</span> <span class="o">+</span> <span class="s2">&#34;.csv&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;ansi&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="step2-shift-data-configuration">
+  Step2: Shift data configuration
+  <a class="heading-link" href="#step2-shift-data-configuration">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>We first define the time format conversion functions from the <strong>&ldquo;datetime&rdquo;</strong> module to simplify the code for later use.</p>
+<p>The <strong>&ldquo;interval_transformation&rdquo;</strong> function will use the value of &ldquo;controller&rdquo; to determine which time to use as the reference within a flexible time period, and then convert that time string into a time format.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">time_transformation</span><span class="p">(</span><span class="n">time_str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time_str</span><span class="p">,</span> <span class="s2">&#34;%H:%M:%S&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">date_transformation</span><span class="p">(</span><span class="n">date_str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="s2">&#34;%Y/%m/</span><span class="si">%d</span><span class="s2"> %H:%M:%S&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">str_transformation</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%Y/%m/</span><span class="si">%d</span><span class="s2"> %H:%M:%S&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">time_transformation2</span><span class="p">(</span><span class="n">timedelta</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">timedelta</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&#34;%Y/%m/</span><span class="si">%d</span><span class="s2"> %H:%M:%S&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">The value of controller will determine which time to use as the reference for a flexible time period.
+</span></span></span><span class="line"><span class="cl"><span class="s2">If the value is 0, the earlier time is used as the reference; if the value is 1, the later time
+</span></span></span><span class="line"><span class="cl"><span class="s2">is used as the reference.
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">interval_transformation</span><span class="p">(</span><span class="n">interval_str</span><span class="p">,</span> <span class="n">controller</span><span class="p">):</span>  <span class="c1"># interval_str format: &#34;hh:mm:ss-hh:mm:ss&#34; or &#34;hh:mm:ss&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="s2">&#34;-&#34;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">interval_str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">today_str</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="n">interval_str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">today_str</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="p">(</span><span class="n">interval_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&#34;-&#34;</span><span class="p">))[</span><span class="n">controller</span><span class="p">])</span>
+</span></span></code></pre></div><p>Create a generic shift <strong>class</strong> and store the attributes specific to each shift type within it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">in_time = shift clock-in time
+</span></span></span><span class="line"><span class="cl"><span class="s2">out_time = shift clock-out time
+</span></span></span><span class="line"><span class="cl"><span class="s2">wrokers = list of all employees for that shift
+</span></span></span><span class="line"><span class="cl"><span class="s2">minimum_hours = minimum working hours for that shift
+</span></span></span><span class="line"><span class="cl"><span class="s2">weekday_required = minimum number of people required for that shift on weekdays
+</span></span></span><span class="line"><span class="cl"><span class="s2">weekend_required = minimum number of people required for that shift on weekends
+</span></span></span><span class="line"><span class="cl"><span class="s2">shift_name = name of the shift
+</span></span></span><span class="line"><span class="cl"><span class="s2">replacement = dictionary of individuals who may be substitutes for that shift
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">shift</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time1</span><span class="p">,</span> <span class="n">time2</span><span class="p">,</span> <span class="n">people</span><span class="p">,</span> <span class="n">minimum_hour</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">weekend</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">replace</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">in_time</span> <span class="o">=</span> <span class="n">interval_transformation</span><span class="p">(</span><span class="n">interval_str</span><span class="o">=</span><span class="n">time1</span><span class="p">,</span> <span class="n">controller</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">out_time</span> <span class="o">=</span> <span class="n">interval_transformation</span><span class="p">(</span><span class="n">interval_str</span><span class="o">=</span><span class="n">time2</span><span class="p">,</span> <span class="n">controller</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">workers</span> <span class="o">=</span> <span class="n">people</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">minimum_hours</span> <span class="o">=</span> <span class="n">minimum_hour</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">weekday_required</span> <span class="o">=</span> <span class="n">weekday</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">weekend_required</span> <span class="o">=</span> <span class="n">weekend</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">attendance</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">shift_name</span> <span class="o">=</span> <span class="n">name</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">replacement</span> <span class="o">=</span> <span class="n">replace</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Store the attributes for each shift in their respective data.</span>
+</span></span><span class="line"><span class="cl"><span class="n">exmaple_shift</span> <span class="o">=</span> <span class="n">shift</span><span class="p">(</span><span class="n">time1</span><span class="o">=</span><span class="s2">&#34;07:30:59-08:30:59&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">time2</span><span class="o">=</span><span class="s2">&#34;16:30:00-17:30:00&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">minimum_hour</span> <span class="o">=</span> <span class="mi">9</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">weekday</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">weekend</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">name</span><span class="o">=</span><span class="s2">&#34;Company_B_morning&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">replace</span><span class="o">=</span><span class="p">[])</span>
+</span></span></code></pre></div><h4 id="step3-determine-the-clock-in-and-clock-out-times-for-each-record">
+  Step3: Determine the clock-in and clock-out times for each record
+  <a class="heading-link" href="#step3-determine-the-clock-in-and-clock-out-times-for-each-record">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>We define a function called &ldquo;employee_classification&rdquo; to store employee attendance data by time into a shift-based dictionary. Since employees often have issues with incorrect card swipes, resulting in multiple attendance records for the same swipe, we ignore duplicate attendance data for the same person within a five-minute interval.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="c1"># Define a function to store employee attendance data by time into a shift-based dictionary.</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">employee_classification</span><span class="p">(</span><span class="n">shift_dict</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">shift_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shift</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="p">(</span><span class="n">date_transformation</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="o">-</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">shift_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">          <span class="o">&gt;=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)):</span>  <span class="c1"># Ignore data for the same person within a five-minute interval.</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shift_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+</span></span></code></pre></div><p>Then we use a for loop to iterate through each attendance record in the raw data. As mentioned earlier, employees at Company B frequently have shift substitutions, and the original data does not label shifts. Therefore, we cannot categorize Company B&rsquo;s data by shift at this point; instead, we will use other functions later to perform the calculations for shift substitutions.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="n">B_employees</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># A dictionary for recording attendance data for Company B employees.</span>
+</span></span><span class="line"><span class="cl"><span class="n">C_morning</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># A dictionary for recording attendance data for Company C employees.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">today_data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>  <span class="c1"># for loop to iterate through each attendance record.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">shift_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">today_str</span> <span class="ow">in</span> <span class="n">time_str</span><span class="p">:</span>  <span class="c1"># Only keep today&#39;s data.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="s2">&#34;exampleB&#34;</span> <span class="ow">in</span> <span class="n">name_str</span><span class="p">:</span>  <span class="c1"># Check if it belongs to Company B.</span>
+</span></span><span class="line"><span class="cl">            <span class="n">employee_classification</span><span class="p">(</span><span class="n">shift_dict</span><span class="o">=</span><span class="n">B_employees</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name_str</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time_str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="s2">&#34;exampleC&#34;</span> <span class="ow">in</span> <span class="n">name_str</span><span class="p">:</span>  <span class="c1"># Check if it belongs to Company C.</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="s2">&#34;morning&#34;</span> <span class="ow">in</span> <span class="n">shift_str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">employee_classification</span><span class="p">(</span><span class="n">shift_dict</span><span class="o">=</span><span class="n">C_morning</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name_str</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">time_str</span><span class="p">)</span>
+</span></span></code></pre></div><p>Under normal circumstances, an employee would swipe their card once when entering the company and once when leaving, so theoretically, their attendance record should be an <strong>even number</strong>. We define the &ldquo;even_check&rdquo; function to verify whether the attendance count is even and use this function to verify the dictionaries for each different shift.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="c1"># Check if the number of attendance instances is even.</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">even_check</span><span class="p">(</span><span class="n">people_dict</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">people</span> <span class="ow">in</span> <span class="n">people_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people</span><span class="p">])</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">error_people</span><span class="p">[</span><span class="n">people</span><span class="p">]</span> <span class="o">=</span> <span class="n">people_dict</span><span class="p">[</span><span class="n">people</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">people</span> <span class="ow">in</span> <span class="n">error_people</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">people</span> <span class="ow">in</span> <span class="n">people_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="k">del</span> <span class="n">people_dict</span><span class="p">[</span><span class="n">people</span><span class="p">]</span>
+</span></span></code></pre></div><h4 id="step4-calculate-attendance-status-for-each-shift">
+  Step4: Calculate attendance status for each shift
+  <a class="heading-link" href="#step4-calculate-attendance-status-for-each-shift">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>We define a function to subtract the shift working hours from the employee&rsquo;s attendance periods to avoid counting the employee&rsquo;s attendance multiple times.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">Define a function to subtract the shift working hours from the employee attendance period.
+</span></span></span><span class="line"><span class="cl"><span class="s2">time_list represents the employee&#39;s attendance periods, start is the shift start time, and end is the shift end time.
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="n">time_list</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">start</span> <span class="o">&lt;</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">time_list</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">counter</span><span class="p">])</span> <span class="ow">or</span>
+</span></span><span class="line"><span class="cl">           <span class="n">end</span> <span class="o">&gt;</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">time_list</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">counter</span> <span class="o">&gt;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_list</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">counter</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_list</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">time_list</span><span class="o">.</span><span class="n">insert</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">str_transformation</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">time_list</span><span class="o">.</span><span class="n">insert</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">str_transformation</span><span class="p">(</span><span class="n">end</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">time_list</span>
+</span></span></code></pre></div><p>Since employees who assist with substitute shifts sometimes use a card named &ldquo;Substitute&rdquo; for clocking in and sometimes use their own cards, we cannot directly determine whether an employee is a substitute based on the card name used for clocking in. So, we design a process to calculate the number of employees present while also considering substitute shifts.</p>
+<p>As shown in the image below, the orange line represents the working hours of a shift, the blue line represents employee D&rsquo;s attendance period, and the green line represents employee E&rsquo;s attendance period. Assume that employee E is assisting employee D by covering the entire shift&rsquo;s working hours.</p>
+<p>Since employee D&rsquo;s clock-out time is earlier than the shift end time, we set employee D&rsquo;s clock-out time as &ldquo;boundary point X.&rdquo; Similarly, because employee E&rsquo;s clock-in time is later than the shift start time, we set employee E&rsquo;s clock-in time as &ldquo;boundary point Y&rdquo; to segment the time periods.</p>
+<p>Then we can create segments A, B, and C by pairing the shift start time, shift end time, and each of the boundary points with their adjacent neighbors. At this point, we just need to check whether the number of employees present in each segment A, B and C is greater than 1 to determine if there are employees present throughout the entire shift working hours.</p>
+<p><img src="/images/automation04.png"></p>
+<p>We achieve the creation of boundary points by defining the &ldquo;ordering&rdquo; function.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="c1"># Define a function to insert a specific time into a time-sorted list containing different times.</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ordering</span><span class="p">(</span><span class="n">inserted_time</span><span class="p">,</span> <span class="n">time_list</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">inserted_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">time_list</span><span class="p">[</span><span class="n">counter</span><span class="p">]):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">counter</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_list</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">inserted_time</span><span class="p">)</span>
+</span></span></code></pre></div><p>Next, we apply the &ldquo;ordering&rdquo; function within the new &ldquo;boundary_check&rdquo; function to complete the entire verification process.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">Define a function to check shift substitutions and the number of employees present,
+</span></span></span><span class="line"><span class="cl"><span class="s2">and return [number of employees present, substitute01, substitute02...]
+</span></span></span><span class="line"><span class="cl"><span class="s2">start_str = shift start time string
+</span></span></span><span class="line"><span class="cl"><span class="s2">end_str = shift end time string
+</span></span></span><span class="line"><span class="cl"><span class="s2">people_dict = a dictionary that records the clock-in and clock-out times of employees and substitutes.
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">boundary_check</span><span class="p">(</span><span class="n">start_str</span><span class="p">,</span> <span class="n">end_str</span><span class="p">,</span> <span class="n">people_dict</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">shift_start</span> <span class="o">=</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">start_str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">shift_end</span> <span class="o">=</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">end_str</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time_line</span> <span class="o">=</span> <span class="p">[</span><span class="n">shift_start</span><span class="p">,</span> <span class="n">shift_end</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result_list</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Use a for loop to apply the &#34;ordering&#34; function to all employees in the dictionary to derive the boundary points.</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">people1</span> <span class="ow">in</span> <span class="n">people_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people1</span><span class="p">])</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">in_time1</span> <span class="o">=</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people1</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">out_time1</span> <span class="o">=</span> <span class="n">date_trnasformation</span><span class="p">(</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people1</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">in_time1</span> <span class="o">&gt;</span> <span class="n">shift_start</span> <span class="ow">and</span>
+</span></span><span class="line"><span class="cl">                <span class="n">in_time1</span> <span class="o">&lt;</span> <span class="n">shift_end</span> <span class="ow">and</span>
+</span></span><span class="line"><span class="cl">                <span class="n">people_dict</span><span class="p">[</span><span class="n">people1</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">time_line</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ordering</span><span class="p">(</span><span class="n">inserted_time</span><span class="o">=</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people1</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span><span class="p">],</span> <span class="n">time_list</span><span class="o">=</span><span class="n">time_line</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">out_time1</span> <span class="o">&lt;</span> <span class="n">shift_end</span> <span class="ow">and</span>
+</span></span><span class="line"><span class="cl">                <span class="n">out_time1</span> <span class="o">&gt;</span> <span class="n">shift_start</span> <span class="ow">and</span>
+</span></span><span class="line"><span class="cl">                <span class="n">people_dict</span><span class="p">[</span><span class="n">people1</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">time_line</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ordering</span><span class="p">(</span><span class="n">inserted_time</span><span class="o">=</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people1</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">time_list</span><span class="o">=</span><span class="n">time_line</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check the number of employees present in each segment between adjacent boundary points.</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time_line</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">start</span> <span class="o">=</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">time_line</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">end</span> <span class="o">=</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">time_line</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Record the number of employees present in the current segment.</span>
+</span></span><span class="line"><span class="cl">        <span class="n">replace</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># A list that stores individuals who successfully substituted using a &#34;Substitute&#34; card.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">people2</span> <span class="ow">in</span> <span class="n">people_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people2</span><span class="p">])</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">in_time2</span> <span class="o">=</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people2</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">j</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                <span class="n">out_time2</span> <span class="o">=</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">people_dict</span><span class="p">[</span><span class="n">people2</span><span class="p">][</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">in_time2</span> <span class="o">&lt;=</span> <span class="n">start</span> <span class="ow">and</span> <span class="n">out_time2</span> <span class="o">&gt;=</span> <span class="n">end</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="s2">&#34;Substitue&#34;</span> <span class="ow">in</span> <span class="n">people2</span> <span class="ow">and</span> <span class="n">people2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">replace</span><span class="p">:</span>               
+</span></span><span class="line"><span class="cl">                        <span class="n">replace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">people2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">minimum_attend</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s2">&#34;inf&#34;</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">result_list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">result</span> <span class="o">&lt;</span> <span class="n">minimum_attend</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">minimum_attend</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">minimum_attend</span> <span class="o">+</span> <span class="n">replace</span>                         
+</span></span></code></pre></div><p>Finally, we can use the <strong>&quot;.weekday()&quot;</strong> method to determine the day of the week for the date being checked, and apply the various check functions mentioned earlier according to the different parameters for weekdays and weekends for each shift.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="k">if</span> <span class="n">date_transformation</span><span class="p">(</span><span class="n">today_str</span> <span class="o">+</span> <span class="s2">&#34; &#34;</span> <span class="o">+</span> <span class="s2">&#34;06:00:00&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+</span></span></code></pre></div><h4 id="step5-output-calculation-results">
+  Step5: Output calculation results
+  <a class="heading-link" href="#step5-output-calculation-results">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
+<p>In the final part, we need to first create a <strong>DataFrame</strong> format to facilitate the subsequent generation of the Excel file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="c1"># Create a dictionary for the DataFrame to facilitate the final file output.</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="n">today_str</span><span class="p">:[],</span> <span class="s2">&#34;Check_results&#34;</span><span class="p">:[]}</span>
+</span></span></code></pre></div><p>Next, we define the &ldquo;basic_generate&rdquo; function to handle the addition of data for file generation. We then use this function to construct the subsequent &ldquo;generate&rdquo; and &ldquo;result_generate&rdquo; functions, which will be used to produce a complete attendance status for a shift.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="c1"># Define a function to add the content to be produced into the DataFrame.</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">basic_generate</span><span class="p">(</span><span class="n">left_list</span><span class="p">,</span> <span class="n">right_list</span><span class="p">,</span> <span class="n">left_arg</span><span class="p">,</span> <span class="n">right_arg</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">left_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">left_arg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">right_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right_arg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Use the previously defined &#34;basic_generate&#34; function to fully generate the attendance status for a shift.</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">result_generate</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">required</span><span class="p">,</span> <span class="n">attend</span><span class="p">,</span> <span class="n">replacement</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">basic_generate</span><span class="p">(</span><span class="n">left_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="n">today_str</span><span class="p">],</span> <span class="n">right_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">&#34;Check_results&#34;</span><span class="p">],</span> <span class="n">left_arg</span><span class="o">=</span><span class="s2">&#34; &#34;</span><span class="p">,</span> <span class="n">right_arg</span><span class="o">=</span><span class="s2">&#34; &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">basic_generate</span><span class="p">(</span><span class="n">left_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="n">today_str</span><span class="p">],</span> <span class="n">right_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">&#34;Check_results&#34;</span><span class="p">],</span> <span class="n">left_arg</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">right_arg</span><span class="o">=</span><span class="n">status</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">basic_generate</span><span class="p">(</span><span class="n">left_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="n">today_str</span><span class="p">],</span> <span class="n">right_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">&#34;Check_results&#34;</span><span class="p">],</span> <span class="n">left_arg</span><span class="o">=</span><span class="s2">&#34;Expected_attendees&#34;</span><span class="p">,</span> <span class="n">right_arg</span><span class="o">=</span><span class="n">required</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">basic_generate</span><span class="p">(</span><span class="n">left_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="n">today_str</span><span class="p">],</span> <span class="n">right_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">&#34;Check_results&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="n">left_arg</span><span class="o">=</span><span class="s2">&#34;Actual_attendees&#34;</span><span class="p">,</span> <span class="n">right_arg</span><span class="o">=</span><span class="n">attend</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">required</span> <span class="o">&lt;=</span> <span class="n">attend</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">generate</span><span class="p">(</span><span class="s2">&#34;Attendance_normal&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">replacement</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">replacement</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">basic_generate</span><span class="p">(</span><span class="n">left_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="n">today_str</span><span class="p">],</span> <span class="n">right_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">&#34;Check_results&#34;</span><span class="p">],</span> <span class="n">left_arg</span><span class="o">=</span><span class="s2">&#34;Substitute employee&#34;</span><span class="p">,</span> <span class="n">right_arg</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">generate</span><span class="p">(</span><span class="s2">&#34;Attendance_abnormal&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">replacement</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">replacement</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">basic_generate</span><span class="p">(</span><span class="n">left_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="n">today_str</span><span class="p">],</span> <span class="n">right_list</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">&#34;Check_results&#34;</span><span class="p">],</span> <span class="n">left_arg</span><span class="o">=</span><span class="s2">&#34;Substitute employee&#34;</span><span class="p">,</span> <span class="n">right_arg</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> 
+</span></span></code></pre></div><p>Finally, use the functions to add the complete attendance status for each shift to the DataFrame, and then generate the Excel file from the DataFrame.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="n">output_excel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">output_excel</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&#34;output.xlsx&#34;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span></code></pre></div><p>The attendance report generated after execution will be similar to the image below:</p>
+<p><img src="/images/automation05.png"></p>
+<h2 id="future-benefits">
+  Future Benefits
+  <a class="heading-link" href="#future-benefits">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Firstly, automation resolves the issue of calculation errors that occur during manual operations, mitigating the additional risks and subsequent costs associated with human mistakes.</p>
+<p>Secondly, it reduces daily labor costs. According to the management department, the manual calculation process previously required about <strong>30 minutes each day</strong> for data verification and comparison, so automation effectively decreases the labor costs related to repetitive tasks.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+  
+</section>
+
+
+        
+        
+        
+        
+        
+
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2024
+     Hubert Huang 
+    ·
+    
+    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

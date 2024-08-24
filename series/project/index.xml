@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Project on Hubert Huang</title>
+    <link>http://HubertHuang2002.github.io/series/project/</link>
+    <description>Recent content in Project on Hubert Huang</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://HubertHuang2002.github.io/series/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project: Automating the Attendance System</title>
+      <link>http://HubertHuang2002.github.io/posts/project1/</link>
+      <pubDate>Fri, 23 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/posts/project1/</guid>
+      <description>Due to some information in this project being confidential, the complete source code will not be disclosed.&#xA;Background of the Issue Link to heading My internship company (hereinafter referred to as Company A) has outsourced its cleaning and security services to two different companies: Company B for cleaning and Company C for security. Both the cleaning staff and security personnel work different shifts, such as morning, evening, or night, with separate schedules for weekdays and weekends.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hubert Huang</title>
+    <link>http://HubertHuang2002.github.io/</link>
+    <description>Recent content on Hubert Huang</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://HubertHuang2002.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project: Automating the Attendance System</title>
+      <link>http://HubertHuang2002.github.io/posts/project1/</link>
+      <pubDate>Fri, 23 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/posts/project1/</guid>
+      <description>Due to some information in this project being confidential, the complete source code will not be disclosed.&#xA;Background of the Issue Link to heading My internship company (hereinafter referred to as Company A) has outsourced its cleaning and security services to two different companies: Company B for cleaning and Company C for security. Both the cleaning staff and security personnel work different shifts, such as morning, evening, or night, with separate schedules for weekdays and weekends.</description>
+    </item>
+    <item>
+      <title>Article: The BA Summer Camp</title>
+      <link>http://HubertHuang2002.github.io/posts/article2/</link>
+      <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/posts/article2/</guid>
+      <description>Introduction to the BA Summer Camp Link to heading &amp;ldquo;The BA Summer Camp&amp;rdquo; stands for &amp;ldquo;the Business Administration Summer Camp&amp;rdquo;, and it is specifically organized for Taiwanese high school students to learn about business administration and related fields.&#xA;The Camp&amp;rsquo;s Curriculum and Content Link to heading As mentioned earlier, our primary goal is to introduce high school students to the field of business administration. Therefore, the curriculum focuses on the five key areas of business administration:</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://HubertHuang2002.github.io/about/</link>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/about/</guid>
+      <description>I am Hubert Huang, currently a junior student majoring in Business Administration at National Taiwan University .&#xA;I have experience as a campus ambassador for the securities industry, an internship related to data analysis in the tech industry, and as the president and public relations director of a club. My specialties include, but are not limited to, data analysis, process improvement, and linear programming. I am also skilled in teamwork and open to interdisciplinary learning.</description>
+    </item>
+    <item>
+      <title>Article: Introduction to NTU BA</title>
+      <link>http://HubertHuang2002.github.io/posts/article1/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/posts/article1/</guid>
+      <description>In the following article, we use “NTU BA” to refer to the department of Business Administration at National Taiwan University.&#xA;A Brief Introduction to NTU BA Link to heading NTU BA is affiliated with the College of Management at National Taiwan University. Our curriculum includes foundational business courses such as calculus, statistics, economics, accounting, and financial management. We also offer unique courses compared to other departments in the College of Management, such as marketing management, strategic management, and management science model.</description>
+    </item>
+    <item>
+      <title>Autores de Hugo</title>
+      <link>http://HubertHuang2002.github.io/autores/autores-de-hugo/</link>
+      <pubDate>Thu, 05 Jan 2023 01:15:52 +0100</pubDate>
+      <guid>http://HubertHuang2002.github.io/autores/autores-de-hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>temas</title>
+      <link>http://HubertHuang2002.github.io/categoria/temas/</link>
+      <pubDate>Wed, 04 Jan 2023 23:21:18 +0100</pubDate>
+      <guid>http://HubertHuang2002.github.io/categoria/temas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sintaxe</title>
+      <link>http://HubertHuang2002.github.io/categoria/sintaxe/</link>
+      <pubDate>Wed, 04 Jan 2023 23:21:06 +0100</pubDate>
+      <guid>http://HubertHuang2002.github.io/categoria/sintaxe/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Códigos curtos</title>
+      <link>http://HubertHuang2002.github.io/tags/shortcodes/_index.pt-br/</link>
+      <pubDate>Wed, 04 Jan 2023 11:51:36 +0100</pubDate>
+      <guid>http://HubertHuang2002.github.io/tags/shortcodes/_index.pt-br/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://HubertHuang2002.github.io/about.pt-br/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/about.pt-br/</guid>
+      <description>Escrito em Go, Hugo é um gerador de sites estáticos de código aberto disponível sobre a licença Apache Licence 2.0. O Hugo suporta TOML, YAML e JSON como arquivos de dados, Markdown e HTML como arquivos de conteúdo, e usa shortcodes para adicionar conteúdos ricos. Outras funcionalidades notaveis são taxonomias, modo multilingual, processamento de imagens, formatos de saída customizaveis, minificação de HTML/CSS/JS e suporte a fluxos SASS/SCSS.&#xA;O Hugo faz o uso de vários projetos de código aberto incluíndo:</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>http://HubertHuang2002.github.io/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/contact/</guid>
+      <description>Follow me, @johndoe.</description>
+    </item>
+    <item>
+      <title>Contato</title>
+      <link>http://HubertHuang2002.github.io/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/contact/</guid>
+      <description>Me siga em @joaoninguem.</description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>http://HubertHuang2002.github.io/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/projects/</guid>
+      <description>Nothing to see here&amp;hellip; Move along!</description>
+    </item>
+    <item>
+      <title>Projetos</title>
+      <link>http://HubertHuang2002.github.io/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://HubertHuang2002.github.io/projects/</guid>
+      <description>Nada para ver aqui.. Circulando!</description>
+    </item>
+  </channel>
+</rss>
