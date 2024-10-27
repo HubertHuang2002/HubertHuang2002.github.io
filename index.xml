@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hubert Huang | Personal Website</title>
+    <link>https://HubertHuang2002.github.io/</link>
+    <description>Recent content on Hubert Huang | Personal Website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Aug 2024 10:07:47 +0600</lastBuildDate>
+    <atom:link href="https://HubertHuang2002.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automating the Attendance System</title>
+      <link>https://HubertHuang2002.github.io/blog/post-3/</link>
+      <pubDate>Fri, 23 Aug 2024 10:07:47 +0600</pubDate>
+      <guid>https://HubertHuang2002.github.io/blog/post-3/</guid>
+      <description>&lt;p&gt;Due to some information in this project being confidential, the complete source code&#xA;will not be disclosed.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to the BA Summer Camp</title>
+      <link>https://HubertHuang2002.github.io/blog/post-2/</link>
+      <pubDate>Mon, 05 Aug 2024 10:07:47 +0600</pubDate>
+      <guid>https://HubertHuang2002.github.io/blog/post-2/</guid>
+      <description>&lt;h2 id=&#34;introduction-to-the-ba-summer-camp&#34;&gt;Introduction to the BA Summer Camp&lt;/h2&gt;&#xA;&lt;p&gt;&amp;ldquo;The BA Summer Camp&amp;rdquo; stands for &lt;strong&gt;&amp;ldquo;the Business Administration Summer Camp&amp;rdquo;&lt;/strong&gt;, and it is specifically organized for Taiwanese high school students to learn about business administration and related fields.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to NTU BA</title>
+      <link>https://HubertHuang2002.github.io/blog/post-1/</link>
+      <pubDate>Mon, 01 Jul 2024 10:07:47 +0600</pubDate>
+      <guid>https://HubertHuang2002.github.io/blog/post-1/</guid>
+      <description>&lt;p&gt;In the following article, we use &amp;ldquo;NTU BA&amp;rdquo; to refer to the department of &lt;a href=&#34;https://management.ntu.edu.tw/BA&#34;&gt;Business Administration at National Taiwan University&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
