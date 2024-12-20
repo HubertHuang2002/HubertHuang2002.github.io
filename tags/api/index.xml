@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API on Hubert Huang | Personal Website</title>
+    <link>https://HubertHuang2002.github.io/tags/api/</link>
+    <description>Recent content in API on Hubert Huang | Personal Website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 19 Dec 2024 10:07:47 +0600</lastBuildDate>
+    <atom:link href="https://HubertHuang2002.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Real-Time News Summary Platform</title>
+      <link>https://HubertHuang2002.github.io/blog/post-5/</link>
+      <pubDate>Thu, 19 Dec 2024 10:07:47 +0600</pubDate>
+      <guid>https://HubertHuang2002.github.io/blog/post-5/</guid>
+      <description>&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;&#xA;&lt;p&gt;This is our final project for the course &amp;ldquo;Web Application Programming.&amp;rdquo;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
