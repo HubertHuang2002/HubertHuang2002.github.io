@@ -144,7 +144,7 @@
           
         </div>
         
-        <img src="https://HubertHuang2002.github.io/images/featured-post/automation00.jpg" class="img-fluid w-100 mb-4" alt="Automated Attendance Data Processing System">
+        <img src="https://HubertHuang2002.github.io/images/featured-post/post-3.jpg" class="img-fluid w-100 mb-4" alt="Automated Attendance Data Processing System">
         
         <div class="content mb-5">
           <p>Due to some information in this project being confidential, the complete source code
@@ -292,7 +292,7 @@ def clear(time_list, start, end):
 <p>As shown in the image below, the orange line represents the working hours of a shift, the blue line represents employee D&rsquo;s attendance period, and the green line represents employee E&rsquo;s attendance period. Assume that employee E is assisting employee D by covering the entire shift&rsquo;s working hours.</p>
 <p>Since employee D&rsquo;s clock-out time is earlier than the shift end time, we set employee D&rsquo;s clock-out time as &ldquo;boundary point X.&rdquo; Similarly, because employee E&rsquo;s clock-in time is later than the shift start time, we set employee E&rsquo;s clock-in time as &ldquo;boundary point Y&rdquo; to segment the time periods.</p>
 <p>Then we can create segments A, B, and C by pairing the shift start time, shift end time, and each of the boundary points with their adjacent neighbors. At this point, we just need to check whether the number of employees present in each segment A, B and C is greater than 1 to determine if there are employees present throughout the entire shift working hours.</p>
-<p><img src="/images/automation04.png" alt=""></p>
+<p><img src="/images/automation04.jpg" alt=""></p>
 <p>We achieve the creation of boundary points by defining the <code>ordering</code> function.</p>
 <pre tabindex="0"><code># Define a function to insert a specific time into a time-sorted list containing different times.
 def ordering(inserted_time, time_list):
