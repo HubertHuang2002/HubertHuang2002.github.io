@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistical Analysis on Hubert Huang | Personal Website</title>
+    <link>https://HubertHuang2002.github.io/tags/statistical-analysis/</link>
+    <description>Recent content in Statistical Analysis on Hubert Huang | Personal Website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Jan 2025 10:07:47 +0600</lastBuildDate>
+    <atom:link href="https://HubertHuang2002.github.io/tags/statistical-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>YouBike Statistical Analysis and Forecasting</title>
+      <link>https://HubertHuang2002.github.io/blog/post-6/</link>
+      <pubDate>Thu, 09 Jan 2025 10:07:47 +0600</pubDate>
+      <guid>https://HubertHuang2002.github.io/blog/post-6/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This is my side project, and the complete code can be accessed via the &lt;a href=&#34;https://github.com/HubertHuang2002/YouBike_Statistical_Analysis_and_Forecasting&#34;&gt;&lt;strong&gt;GitHub.&lt;/strong&gt;&lt;/a&gt; The following focuses on the research and analysis aspects.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
