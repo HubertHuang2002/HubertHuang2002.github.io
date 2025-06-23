@@ -141,92 +141,256 @@
 
         </div>
         <h4 class="widget-title">Experience</h4>
-        <ul class="timeline">
+        
+        
+        <style>
+          .experience-timeline {
+            width: 100%;
+            max-width: 800px;
+            background: #fff;
+            padding: 50px 30px;
+            position: relative;
+            margin: 0 auto;
+          }
+          
+          .experience-timeline:before {
+            content: '';
+            position: absolute;
+            top: 0px;
+            left: calc(33% + 15px);
+            bottom: 0px;
+            width: 4px;
+            background: #ddd;
+          }
+          
+          .experience-timeline:after {
+            content: "";
+            display: table;
+            clear: both;
+          }
+          
+          .experience-timeline .entry {
+            clear: both;
+            text-align: left;
+            position: relative;
+            overflow: visible;
+          }
+          
+          .experience-timeline .entry .title {
+            margin-bottom: .5em;
+            position: absolute;
+            right: calc(67% + 30px);
+            text-align: right;
+            white-space: nowrap;
+          }
+          
+          .experience-timeline .entry .title > * {
+            display: block;
+            white-space: nowrap;
+          }
+
+          .experience-timeline .entry .title * {
+            line-height: 1.6em;      
+            margin-bottom: 4px;       
+          }
+
+          .experience-timeline .entry .body p,
+          .experience-timeline .entry .body ul,
+          .experience-timeline .entry .body li {
+            line-height: 1.6em;
+            margin-bottom: 4px;
+          }
+          
+
+          .experience-timeline .entry::before{
+            content:'';
+            position:absolute;
+            left: calc(33% + 7px);
+            top: 26px;                
+            width:16px;
+            height:16px;
+            background: salmon;
+            border-radius:50%;
+            transform: translateX(-50%);
+            z-index: 2;
+          }
+          
+          
+          .experience-timeline .entry .title h3 {
+            margin-bottom: 8px;
+            font-size: 120%;
+            font-weight: 600;
+          }
+          
+          .experience-timeline .entry .title p {
+            margin: 0;
+            font-size: 100%;
+            color: #666;
+          }
+          
+          .experience-timeline .entry .title p:last-child {
+            font-size: 100%;
+            margin-top: 2px;
+          }
+          
+          .experience-timeline .entry .body {
+            margin: 0 0 3em;
+            margin-left: 33%;
+            padding-left: 30px;
+            min-height: 80px;
+            font-size: 100%;
+          }
+          
+          .experience-timeline .entry .body p {
+            line-height: 1.6em;
+            text-align: left;
+          }
+
+    
+          .experience-timeline .entry .body p:first-child {
+            margin-top: 0;
+            font-weight: 400;
+          }
+
+
+          .experience-timeline .entry .body p.bold {
+            font-weight: bold;
+            font-size: 120%;
+          }
+          
+
+          .experience-timeline .entry .body ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+          }
+
+          .experience-timeline .entry .body ul li {
+            position: relative;
+            margin-bottom: 4px;
+            padding-left: 1.5em;    
+            line-height: 1.6em;
+          }
+
+          .experience-timeline .entry .body ul li::before {
+            content: "–";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #666;
+            width: 1.5em;          
+            display: inline-block;
+          }
 
           
-          <li>
-            <div class="direction-r">
-              <div class="flag-wrapper">
-                <span class="hexa"></span>
-                <span class="time-wrapper"><span class="time">Feb 2025</span></span>
-              </div>
-              <div class="desc">
-                <h5>Director of Academic Affairs</h5> <br> <h6>NTU Data Analytics Club</h6>
-              </div>
+        </style>
+        
+        
+        <div class="experience-timeline">
+          <div class="entry">
+            <div class="title">
+              <h3>Jun 2025 - Present</h3>
+              <p>DBS Bank</p>
+              <p>Taipei City, Taiwan</p>
             </div>
-          </li>
-
-          
-          <li>
-            <div class="direction-l">
-              <div class="flag-wrapper">
-                <span class="hexa"></span>
-                <span class="time-wrapper"><span class="time">Feb 2025</span></span>
-              </div>
-              <div class="desc" >
-                <h5>Teaching Assistant</h5> <br> <h6 >National Taiwan University</h6>
-              </div>
+            <div class="body">
+              <p class="bold">Technology Intern</p>
+              <ul>
+                <li>Developed software applications through the full development lifecycle.</li>
+                <li>Delivered backend solutions using Spring Boot, REST APIs, and cloud technologies.</li>
+              </ul>
             </div>
-          </li>
-
-          
-          <li>
-            <div class="direction-r">
-              <div class="flag-wrapper">
-                <span class="hexa"></span>
-                <span class="time-wrapper"><span class="time">Aug 2024</span></span>
-              </div>
-              <div class="desc">
-                <h5>Director of Public Relations</h5> <br> <h6>TEDxNational Taiwan University</h6>
-              </div>
+          </div>
+          <div class="entry">
+            <div class="title">
+              <h3>May 2025 - Present</h3>
+              <p>NTU Data Analytics Club</p>
+              <p>Taipei City, Taiwan</p>
             </div>
-          </li>
- 
-          
-          <li>
-            <div class="direction-l">
-              <div class="flag-wrapper">
-                <span class="hexa"></span>
-                <span class="time-wrapper"><span class="time">Aug 2024</span></span>
-              </div>
-              <div class="desc">           
-                <h5>President</h5> <br><h6>NTU Table Tennis Club</h6>
-              </div>
+            <div class="body">
+              <p class="bold">Director of Academic Affairs</p>
+              <ul>
+                <li>Taught data analysis-related techniques to club members, such as Python, SQL, machine learning, and more.</li>
+                <li>Served as the group mentor, responsible for guiding and offering data analysis advice to members within the team.</li>
+              </ul>
             </div>
-          </li>
-          
-          
-          <li>
-            <div class="direction-r">
-              <div class="flag-wrapper">
-                <span class="hexa"></span>
-                <span class="time-wrapper"><span class="time">July 2024</span></span>
-              </div>
-              <div class="desc">           
-                <h5>Trend Analyst Intern</h5> <br><h6>Inventec Corporation</h6>
-              </div>
+          </div>
+          <div class="entry">
+            <div class="title">
+              <h3>Feb 2025 - Jun 2025</h3>
+              <p>Dept. of Information Management, NTU</p>
+              <p>Taipei City, Taiwan</p>
             </div>
-          </li>
-
-          
-          <li>
-            <div class="direction-l">
-              <div class="flag-wrapper">
-                <span class="hexa"></span>
-                <span class="time-wrapper"><span class="time">Sep 2023</span></span>
-              </div>
-              <div class="desc">           
-                <h5>Volunteer Math Teacher</h5> <br><h6>NTU Green Tree Club</h6>
-              </div>
+            <div class="body">
+              <p class="bold">Python Teaching Assistant</p>
+              <ul>
+                <li>Served as a teaching assistant for the “Programming for Business Computing (MGT1006)” course.</li>
+                <li>Provided instruction on Python skills and applications to nearly 400 students.</li>
+              </ul>
             </div>
-          </li>          
-        </ul>
+          </div>
+          <div class="entry">
+            <div class="title">
+              <h3>Aug 2024 - Jun 2025</h3>
+              <p>TEDxNational Taiwan University</p>
+              <p>Taipei City, Taiwan</p>
+            </div>
+            <div class="body">
+              <p class="bold">Director of Public Relations</p>
+              <ul>
+                <li>Led the entire public relations department and guided team members in establishing business collaborations with companies.</li>
+                <li>Collaborated with other departments to organize an TED and annual exhibition talk with over 1,000 attendees.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="title">
+              <h3>Aug 2024 - Jun 2025</h3>
+              <p>NTU Table Tennis Club</p>
+              <p>Taipei City, Taiwan</p>
+            </div>
+            <div class="body">
+              <p class="bold">President</p>
+              <ul>
+                <li>Responsible for organizing club courses and events, managing public relations and outreach, overseeing social media pages, and handling financial planning.</li>
+                <li>Collaborated with other universities to organize friendly matches and promote interaction between different universities.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="title">
+              <h3>Jul 2024 - Aug 2024</h3>
+              <p>Inventec Corporation</p>
+              <p>Taipei City, Taiwan</p>
+            </div>
+            <div class="body">
+              <p class="bold">Trend Analyst Intern</p>
+              <ul>
+                <li>Optimized the attendance data system, saving 30 minutes of labor costs daily.</li>
+                <li>Conducted data analytics and research on international indicators.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="title">
+              <h3>Sep 2023 - Jan 2024</h3>
+              <p>NTU Green Tree Club</p>
+              <p>Taipei City, Taiwan</p>
+            </div>
+            <div class="body">
+              <p class="bold">Volunteer Math Teacher</p>
+              <ul>
+                <li>Provided weekly after-school tutoring for underprivileged junior high school students over a period of five months.</li>
+                <li>Assisted underprivileged students with daily life challenges and provided mathematics tutoring.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
 </section>
-
-
 
 
 
