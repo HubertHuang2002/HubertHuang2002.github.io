@@ -6,21 +6,21 @@
     <description>Recent content in Project on Hubert Huang | Personal Website</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Dec 2024 10:07:47 +0600</lastBuildDate>
+    <lastBuildDate>Sun, 22 Jun 2025 10:07:47 +0600</lastBuildDate>
     <atom:link href="https://HubertHuang2002.github.io/categories/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Real-Time News Summary Platform</title>
-      <link>https://HubertHuang2002.github.io/blog/post-5/</link>
-      <pubDate>Thu, 19 Dec 2024 10:07:47 +0600</pubDate>
-      <guid>https://HubertHuang2002.github.io/blog/post-5/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This is our final project for the course &amp;ldquo;Web Application Programming.&amp;rdquo;&lt;/p&gt;</description>
+      <title>Tainan Parking Space Prediction System</title>
+      <link>https://HubertHuang2002.github.io/blog/post-2/</link>
+      <pubDate>Sun, 22 Jun 2025 10:07:47 +0600</pubDate>
+      <guid>https://HubertHuang2002.github.io/blog/post-2/</guid>
+      <description>&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;&#xA;&lt;p&gt;This is our final project for the course &amp;ldquo;Manufacturing Data Science.&amp;rdquo;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Automated Attendance Data Processing System</title>
-      <link>https://HubertHuang2002.github.io/blog/post-3/</link>
-      <pubDate>Fri, 23 Aug 2024 10:07:47 +0600</pubDate>
-      <guid>https://HubertHuang2002.github.io/blog/post-3/</guid>
-      <description>&lt;p&gt;Due to some information in this project being confidential, the complete source code&#xA;will not be disclosed.&lt;/p&gt;</description>
+      <title>Real-Time News Summary Platform</title>
+      <link>https://HubertHuang2002.github.io/blog/post-1/</link>
+      <pubDate>Thu, 19 Dec 2024 10:07:47 +0600</pubDate>
+      <guid>https://HubertHuang2002.github.io/blog/post-1/</guid>
+      <description>&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;&#xA;&lt;p&gt;This is our final project for the course &amp;ldquo;Web Application Programming.&amp;rdquo;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

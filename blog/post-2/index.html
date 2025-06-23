@@ -5,7 +5,7 @@
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A brief introduction to my experience volunteering at the BA camp during the summer.">
+  <meta name="description" content="This is a system provides real-time predictions of parking spaces in Tainan City.">
   <meta name="author" content="Hubert Huang">
     
   
@@ -132,41 +132,294 @@
     <div class="row">
       <div class="col-lg-10 mx-auto">
         
-        <a href="/categories/article"
-          class="text-primary">Article</a>
+        <a href="/categories/project"
+          class="text-primary">Project</a>
         
-        <h2>Introduction to the BA Summer Camp</h2>
+        <h2>Tainan Parking Space Prediction System</h2>
         <div class="mb-3 post-meta">
           <span>By Hubert Huang</span>
           
           <span class="border-bottom border-primary px-2 mx-1"></span>
-          <span>05 August 2024</span>
+          <span>22 June 2025</span>
           
         </div>
         
-        <img src="https://HubertHuang2002.github.io/images/featured-post/post-2.jpg" class="img-fluid w-100 mb-4" alt="Introduction to the BA Summer Camp">
+        <img src="https://HubertHuang2002.github.io/images/featured-post/post-2.png" class="img-fluid w-100 mb-4" alt="Tainan Parking Space Prediction System">
         
         <div class="content mb-5">
-          <h2 id="introduction-to-the-ba-summer-camp">Introduction to the BA Summer Camp</h2>
-<p>&ldquo;The BA Summer Camp&rdquo; stands for <strong>&ldquo;the Business Administration Summer Camp&rdquo;</strong>, and it is specifically organized for Taiwanese high school students to learn about business administration and related fields.</p>
-<h2 id="the-camps-curriculum-and-content">The Camp&rsquo;s Curriculum and Content</h2>
-<p>As mentioned earlier, our primary goal is to introduce high school students to the field of business administration. Therefore, the curriculum focuses on the five key areas of business administration:</p>
+          <h4 id="introduction">Introduction</h4>
+<p>This is our final project for the course &ldquo;Manufacturing Data Science.&rdquo;</p>
+<p>For the original source code, please visit <a href="https://github.com/HubertHuang2002/Tainan_Parking_Space_Prediction_System"><strong>GitHub.</strong></a></p>
+<h4 id="collaborators">Collaborators</h4>
+<p>Hung-Kai Yang, Hao-En Sun, Yi-Lun Hung, Ching-Lin Chen, Fan-Jia (Hubert) Huang</p>
+<hr>
+<h4 id="1-background-and-motivation">1. Background and Motivation</h4>
+<h5 id="11-motivation">1.1 Motivation</h5>
+<p>From past experience—especially in cities where public transportation is not widely adopted, such as Tainan people often rely on cars for weekend outings.
+However, when arriving at crowded areas or tourist spots, they frequently encounter difficulties finding available parking, leading to stress and uncertainty during trip planning.
+If people could know in advance whether parking is likely to be available in a specific area, it would help them make better transportation decisions (such as switching to a scooter or using public transit).
+Moreover, weather conditions significantly impact crowd levels and parking demand in tourist areas.
+Therefore, integrating weather forecasts with historical parking data for predictive purposes fulfills a clear social need and offers practical application value.</p>
+<h5 id="12-background">1.2 Background</h5>
+<p>As a major tourist destination, Tainan City experiences significant fluctuations in parking demand on holidays and under certain weather conditions.
+Developing a model that can predict parking availability—based on daily weather forecasts and historical parking usage—would provide valuable support for smart city initiatives and transportation information systems.
+In more advanced applications, the system could even recommend optimal parking spots based on price, location, and weather, thereby improving user convenience and reducing traffic congestion and illegal parking caused by people circling in search of spaces.</p>
+<h5 id="13-problem-definition">1.3 Problem Definition</h5>
+<p>This study aims to build a <strong>machine learning model</strong> using <strong>weather forecast data</strong> and historical <strong>parking usage records</strong> from Tainan City to predict whether parking spaces will be available in a specific area, along with the estimated number of available spots. Additionally, the research seeks to identify key influencing factors and evaluate the model’s prediction accuracy.</p>
+<h4 id="2-methodology">2. Methodology</h4>
+<h5 id="21-research-process">2.1 Research Process</h5>
+<h6 id="211-data-collection-and-preprocessing">2.1.1 Data Collection and Preprocessing</h6>
+<p>We collected historical data on weather forecasts, parking space availability, and national holidays. A summary of all data fields is shown in Table 1.</p>
+<figure><img src="/images/Parking02.png" width="600px">
+</figure>
+
+<p>During the initial data cleaning phase, we discovered that in some cases, the number of available parking spots exceeded the total capacity of the parking lot. These values were corrected to match the maximum number of spaces available at each location.</p>
+<p>To improve data interpretability and model training efficiency, we aggregated the original high-frequency timestamps into 30-minute intervals. For each interval, we calculated the average number of available parking spaces to serve as the representative value. The decision to use 30-minute intervals was based on the need to preserve meaningful trends in parking demand (e.g., peak vs. off-peak variations) while avoiding the noise and computational burden associated with overly fine-grained time resolution. This approach helps enhance model stability and predictive performance.</p>
+<figure><img src="/images/Parking03.png" width="600px">
+</figure>
+
+<h6 id="212-feature-engineering-and-selection">2.1.2 Feature Engineering and Selection</h6>
+<p>During the exploratory data analysis (EDA), we observed that the parking availability rate exhibits cyclical patterns across months, days of the week, and hours of the day.</p>
+<p>As shown in Figure 2, the availability rate is significantly lower in June and August compared to other months.</p>
+<figure><img src="/images/Parking04.png" width="600px">
+</figure>
+
+<p>Figure 3 illustrates that availability is also relatively lower on weekends. Additionally, Figures 3 and 4 reveal that availability during the daytime—particularly peak hours—is notably lower than during other periods.</p>
+<figure><img src="/images/Parking05.png" width="600px">
+</figure>
+
+<figure><img src="/images/Parking06.png" width="600px">
+</figure>
+
+<p>To preserve these periodic patterns, we applied one-hot encoding to the month and day of the week variables. However, since the number of unique values for the 30-minute time intervals and dates was too large, we applied sine-cosine encoding to both. Furthermore, since the 30-minute interval feature already contains information about the hour, we removed the original hour feature along with other redundant encoded fields.</p>
+<p>We also found in Figure 5 that national holidays and weekends share similar availability distributions. Therefore, we added a new binary feature day_off to help the model better learn holiday-related patterns.</p>
+<figure><img src="/images/Parking07.png" width="600px">
+</figure>
+
+<p>In addition to time-related features, we noticed that wind direction in the weather forecast data was provided in degrees. To make it more meaningful, we converted the wind direction to radians and further applied sine and cosine transformations to represent directional information in a more interpretable format.</p>
+<p>In the feature selection process, we initially experimented with applying one-hot encoding to the <code>ParkingSegmentID</code>. However, the resulting increase in feature dimensionality negatively impacted model performance. Therefore, we decided to exclude <code>ParkingSegmentID</code> from all models to enhance generalization capability.</p>
+<p>Next, we applied <strong>Elastic Net</strong>, which combines both L1 and L2 regularization, to address multicollinearity and perform feature selection. This method helped identify features with non-zero coefficients that are predictive of both the number of available parking spaces and whether the lot is full.</p>
+<p>Additionally, we evaluated an <strong>ensemble-based feature voting</strong> approach across multiple models. Based on this, we selected the top three and top four most frequently chosen features to retrain all models, aiming to further refine performance.</p>
+<h6 id="213-data-splitting">2.1.3 Data Splitting</h6>
+<p>The collected dataset spans from <strong>January 23, 2024 to May 9, 2025</strong>, and contains a total of <strong>2,892,661 records</strong> after preprocessing. We divided the data into the following subsets:</p>
 <ul>
-<li><strong>Production</strong></li>
-<li><strong>Marketing</strong></li>
-<li><strong>Human Resources</strong></li>
-<li><strong>Research and Development</strong></li>
-<li><strong>Finance</strong></li>
+<li><strong>Training set</strong>: January 23, 2024 to January 22, 2025 (73% of the data)</li>
+<li><strong>Validation set</strong>: January 23, 2025 to March 22, 2025 (14% of the data)</li>
+<li><strong>Test set</strong>: March 23, 2025 to May 9, 2025 (13% of the data)</li>
 </ul>
-<p>In terms of professional courses, we invite industry experts with practical experience to teach the specialized classes. Additionally, we design business-related games ourselves to engage students and introduce them to business administration concepts in an interactive way.</p>
-<h2 id="the-reasons-i-volunteer-as-a-teacher">The Reasons I Volunteer as a Teacher</h2>
-<p>The first reason is <strong>gratitude and contentment</strong>. I feel that I have received a lot of help from many people throughout my educational journey, including teachers, classmates, mentors, and parents. Therefore, I hope to give back to students within my capacity.</p>
-<p>Secondly, I am <strong>a former participant of this camp</strong>. The camp not only introduced me to the field of business administration but also allowed me to make many good friends from different schools. Therefore, I believe this camp is very worthwhile and should continue to be supported and held.</p>
-<h2 id="my-role-at-the-camp">My Role at the Camp</h2>
-<p>I am responsible for leading a particular team composed of high school students from various cities across Taiwan. In addition to leading these students through the courses, I also need to foster team spirit and address various questions about university and business administration.</p>
-<p>Due to the uniqueness of my interests and academic background, <strong>&ldquo;Finding Your Own Position&rdquo;</strong> resonates deeply with me. As a result, I am also a speaker on this topic, responsible for sharing how to discover one&rsquo;s own interests and role, with the goal of inspiring students who feel uncertain about their future.</p>
-<h2 id="summary">Summary</h2>
-<p>I am very pleased to have a group of like-minded university students volunteering with me to support the organization of this camp. I highly recommend that friends who share similar values join in supporting this camp and encourage high school students to participate in similar activities to explore their interests.</p>
+<p>Since <strong>GNN models</strong> require all nodes to have data at every time step in order to function properly, we filtered the test set to include only locations with complete data for all time intervals. After filtering, the test set accounts for approximately <strong>11%</strong> of the total data.
+For models other than GNN, the training and validation sets were kept unfiltered to examine whether the models themselves are suitable for handling this task without strict data constraints.</p>
+<h6 id="214-imbalanced-data-handling">2.1.4 Imbalanced Data Handling</h6>
+<p>We define a record as <strong>&ldquo;full&rdquo;</strong> if the number of available parking spaces is <strong>less than 5% of the total capacity</strong>. As shown in <strong>Figure 3-9</strong>, the dataset is highly imbalanced—only about <strong>6%</strong> of the training data represents full status—making it difficult for the model to learn the characteristics of full conditions.</p>
+<p>To address this, we applied two strategies for handling class imbalance in the classification models:</p>
+<ol>
+<li><strong>SMOTE (Synthetic Minority Over-sampling Technique)</strong></li>
+<li><strong>Cost-Sensitive Learning</strong></li>
+</ol>
+<p>For SMOTE, we first performed a <strong>sensitivity analysis using a logistic regression model</strong>, varying the oversampling ratio to maximize the <strong>F1 score</strong>. As shown in <strong>Figure 3-10</strong>, the best F1 score was achieved when the minority class was oversampled to <strong>50%</strong> of the majority class. This ratio was adopted for the final training set.</p>
+<p>For cost-sensitive learning, we adjusted the weight of the minority class to be the <strong>inverse of the class imbalance ratio</strong>, while keeping the majority class weight at <strong>1.0</strong>.</p>
+<p>Due to GNN’s strict requirement that each time step must have <strong>exactly one record per node</strong>, SMOTE was not suitable, as it cannot easily generate synthetic data restricted to specific nodes and time points. Therefore, <strong>GNN models were only tested with cost-sensitive learning</strong>.</p>
+<h6 id="215-predictive-model-training">2.1.5 Predictive Model Training</h6>
+<p>For the <strong>regression task</strong>, we trained and evaluated the following models: <strong>Linear Regression</strong>, <strong>Decision Tree</strong>, <strong>Random Forest</strong>, <strong>XGBoost</strong>, and <strong>Graph Neural Network (GNN)</strong>.
+To assess model performance, we used <strong>Mean Squared Error (MSE)</strong> to reflect the model’s ability to predict extreme values. In addition, to evaluate how models perform under different feature set sizes, we also adopted <strong>Adjusted R²</strong> as a metric.</p>
+<p>For the <strong>classification task</strong>, we trained and evaluated <strong>Logistic Regression</strong>, <strong>Decision Tree</strong>, <strong>Random Forest</strong>, <strong>XGBoost</strong>, and <strong>GNN</strong>.
+Due to the extreme class imbalance in the data, using a fixed probability threshold of 0.5 would result in a large number of false negatives (FN). Therefore, during validation, we selected the threshold that achieved the <strong>highest F1 score</strong>, and used that threshold for the test set.</p>
+<p>In terms of evaluation metrics, we reported <strong>Accuracy</strong> for its intuitive interpretation. However, since the primary goal is to inform users about <strong>potential full-capacity situations</strong>, we placed greater emphasis on the <strong>F1 score</strong>, which balances <strong>recall</strong> and <strong>precision</strong>, avoiding misleadingly high accuracy caused by the dominance of non-full data points.</p>
+<p>Furthermore, due to the highly imbalanced nature of the dataset, using only <strong>ROC-AUC</strong> could result in an overly optimistic view of model performance while failing to detect full parking conditions accurately. Thus, we also adopted <strong>PRC-AUC (Precision-Recall Curve AUC)</strong> to evaluate the model&rsquo;s ability to identify <strong>minority-class full-capacity cases</strong> more effectively.</p>
+<h5 id="22-method-selection-and-justification">2.2 Method Selection and Justification</h5>
+<h6 id="221-feature-selection-approach">2.2.1 Feature Selection Approach</h6>
+<p>Since the initial dataset contained <strong>60 features</strong>, it was difficult for models to effectively identify meaningful patterns. To address this, we adopted <strong>Elastic Net</strong> and an <strong>ensemble-based feature voting</strong> approach to assist in feature selection.</p>
+<p>We chose <strong>Elastic Net</strong> because it combines both <strong>L1 and L2 regularization</strong>, allowing it to effectively manage <strong>multicollinearity</strong> and improve <strong>model stability</strong>. However, since Elastic Net tends to retain features that are <strong>linearly related</strong> to the target variable, we also wanted to capture features with potential <strong>nonlinear relationships</strong>.</p>
+<p>To achieve this, we further applied an <strong>ensemble feature voting strategy</strong> across multiple models, selecting features that were consistently identified as important to ensure broader representativeness in the final feature set.</p>
+<h6 id="222-handling-data-imbalance">2.2.2 Handling Data Imbalance</h6>
+<p>As shown in <strong>Figure 6</strong>, the training dataset is highly imbalanced, making it likely that the model would tend to predict the majority class (non-full status). To mitigate this, we employed <strong>SMOTE (Synthetic Minority Over-sampling Technique)</strong>, which generates new synthetic minority samples through interpolation. This helps balance the dataset without simply duplicating existing samples.</p>
+<figure><img src="/images/Parking08.png" width="600px">
+</figure>
+
+<figure><img src="/images/Parking09.png" width="600px">
+</figure>
+
+<p>However, due to the constraints of <strong>GNN models</strong>, we also explored <strong>cost-sensitive learning</strong>, which is compatible with GNN. By adjusting sample weights, the model applies greater updates to the loss associated with minority-class examples. This compensates for the discrepancy in update frequency between the majority and minority classes. This method enhances the model’s ability to recognize full-capacity situations <strong>without altering the original data distribution</strong>, making it more robust for real-world application.</p>
+<h6 id="223-predictive-model-selection">2.2.3 Predictive Model Selection</h6>
+<p>For model selection, we began by using <strong>basic linear models</strong> (Linear/Logistic Regression) as baselines to assess whether there is a linear relationship between features and the target variable. Since purely linear models are limited in capturing complex patterns, we next tested <strong>Decision Trees</strong>, which can model non-linear relationships.</p>
+<p>To further reduce learning errors from non-linear models, we evaluated two ensemble techniques:</p>
+<ul>
+<li><strong>Random Forest</strong>, a bagging model that reduces variance</li>
+<li><strong>XGBoost</strong>, a boosting model that reduces bias</li>
+</ul>
+<p>During the EDA process, we also constructed a <strong>heatmap (Figure 8)</strong>, which revealed localized clustering in the full-capacity distribution. Based on this spatial relationship, we additionally selected the <strong>Graph Neural Network (GNN)</strong>, which is designed to model interactions between nodes (parking segments) and capture spatial dependencies. This makes GNN particularly suitable for this task alongside traditional machine learning models.</p>
+<figure><img src="/images/Parking10.png" width="600px">
+</figure>
+
+<h4 id="3-data-collection-and-analysis-results">3. Data Collection and Analysis Results**</h4>
+<h5 id="31-data-collection">3.1 Data Collection</h5>
+<p>We collected three types of data:</p>
+<ul>
+<li><strong>Parking availability records</strong></li>
+<li><strong>Historical weather forecasts</strong></li>
+<li><strong>National holiday data</strong></li>
+</ul>
+<p>The data sources include <strong><a href="https://tdx.transportdata.tw">TDX (Transport Data eXchange)</a></strong>, the <strong><a href="https://open-meteo.com/en/docs/historical-forecast-api?timezone=auto&amp;latitude=24.98&amp;longitude=121.45&amp;hourly=rain">Open-Meteo historical forecast API</a></strong>, and <strong><a href="https://github.com/ruyut/TaiwanCalendar">TaiwanCalendar</a></strong> along with <strong>Google Calendar</strong>. All data were acquired through the respective APIs provided by these services.</p>
+<p>These three data sources were merged using <strong>30-minute intervals</strong> and <strong>geographic coordinates (latitude and longitude)</strong>. After merging, we corrected invalid values and standardized categorical features. Specifically:</p>
+<ul>
+<li>Cyclical variables with many categories (e.g., day count, half-hour intervals, wind direction) were transformed using <strong>sine and cosine encoding</strong>.</li>
+<li>Cyclical variables with fewer categories (e.g., day of the week, month) were encoded using <strong>one-hot vectors</strong>.</li>
+</ul>
+<p>The final merged dataset spans from <strong>January 23, 2024 to May 9, 2025</strong>, resulting in a total of <strong>2,892,758 records</strong> and <strong>61 features</strong>.</p>
+<h5 id="32-analysis">3.2 Analysis</h5>
+<h6 id="321-overview-of-analytical-design">3.2.1 Overview of Analytical Design</h6>
+<p>We designed and evaluated <strong>eight predictive strategies</strong>:</p>
+<ol>
+<li><strong>Use all features</strong> to predict the average number of available parking spaces in each time interval.</li>
+<li><strong>Use all features</strong> to predict whether parking spaces are available in each time interval (binary classification).</li>
+<li>Use the <strong>top 20 features</strong> from each model, select those chosen by at least <strong>4 models</strong>, and predict the average number of available parking spaces.</li>
+<li>Use the <strong>top 20 features</strong> from each model, select those chosen by at least <strong>3 models</strong>, and predict the average number of available parking spaces.</li>
+<li>Use features selected by <strong>Elastic Net</strong> from the binary classification task (availability or not), and predict the average number of available parking spaces.</li>
+<li>Use features selected by <strong>Elastic Net</strong> from the regression task (average available spaces), and predict whether parking spaces are available.</li>
+<li>Use features from Elastic Net (regression task) and apply <strong>cost-sensitive learning</strong> to predict whether parking spaces are available.</li>
+<li>Use features from Elastic Net (regression task), apply <strong>SMOTE</strong> to rebalance the data, and predict whether parking spaces are available.</li>
+</ol>
+<p>For each strategy, we applied five different models:</p>
+<ul>
+<li><strong>Linear/Logistic Regression</strong></li>
+<li><strong>Decision Tree</strong></li>
+<li><strong>Random Forest</strong></li>
+<li><strong>XGBoost</strong></li>
+<li><strong>Graph Neural Network (GNN)</strong></li>
+</ul>
+<p>The main libraries and tools Used:</p>
+<ul>
+<li><strong>Linear/Logistic Regression</strong>: <code>LinearRegression</code>, <code>LogisticRegression</code></li>
+<li><strong>Decision Tree</strong>: <code>DecisionTreeRegressor</code>, <code>DecisionTreeClassifier</code></li>
+<li><strong>Random Forest</strong>: <code>RandomForestRegressor</code>, <code>RandomForestClassifier</code></li>
+<li><strong>XGBoost</strong>: <code>XGBRegressor</code>, <code>XGBClassifier</code></li>
+<li><strong>Graph Neural Network</strong>: <code>torch_geometric</code></li>
+<li><strong>Data Preprocessing</strong>: <code>pandas</code></li>
+</ul>
+<h6 id="322-feature-selection-methods-and-results-for-each-model">3.2.2 Feature Selection Methods and Results for Each Model</h6>
+<p>After performing feature selection for each model, we obtained the <strong>top 20 features</strong> identified by each algorithm. Based on the <strong>aggregated vote counts</strong> (as shown in <strong>Figure 9</strong>), we used the most frequently selected features as the basis for <strong>Strategy 3 and Strategy 4</strong>.</p>
+<p>The detailed voting results are presented in <strong>Table 2</strong>.</p>
+<figure><img src="/images/Parking11.png" width="400px">
+</figure>
+
+<figure><img src="/images/Parking12.png" width="600px">
+</figure>
+
+<p>In <strong>Strategies 5 through 8</strong>, we used the <strong>features selected by Elastic Net</strong> as the basis for modeling. The selection results were categorized into two groups: one based on <strong>regression models</strong> and the other based on <strong>classification models</strong>. The <strong>feature weights</strong> are shown in <strong>Figures 10 and 11</strong>, and the detailed voting results are summarized in <strong>Table 3</strong>.</p>
+<figure><img src="/images/Parking13.png" width="400px">
+</figure>
+
+<figure><img src="/images/Parking14.png" width="400px">
+</figure>
+
+<figure><img src="/images/Parking15.png" width="700px">
+</figure>
+
+<p>The Elastic Net feature selection was primarily implemented using <code>ElasticNetCV</code> from the <code>sklearn.linear_model</code> module.</p>
+<h6 id="323-data-imbalance-handling-and-model-hyperparameter-tuning">3.2.3 Data Imbalance Handling and Model Hyperparameter Tuning</h6>
+<p>For the classification task, we applied two methods to address data imbalance: <strong>SMOTE (Synthetic Minority Over-sampling Technique)</strong> and <strong>Cost-Sensitive Learning</strong>.</p>
+<p>We used features selected via <strong>Elastic Net</strong>, and applied <strong>SMOTE</strong> using the <code>imblearn.over_sampling</code> package to generate a balanced dataset. This oversampled dataset was used to train four models: <strong>Logistic Regression</strong>, <strong>Decision Tree</strong>, <strong>Random Forest</strong>, and <strong>XGBoost</strong>. Due to model constraints, <strong>GNN</strong> cannot directly apply SMOTE for data balancing. Therefore, we adopted a <strong>Cost-Sensitive Learning</strong> approach for GNN.</p>
+<p>The specific implementation of cost-sensitive weights in Python is as follows:</p>
+<pre tabindex="0"><code>N_neg = len(df_train_scaled.loc[df_train_scaled[&#39;is_full&#39;] == False])
+N_pos = len(df_train_scaled.loc[df_train_scaled[&#39;is_full&#39;] == True])
+pos_weight = N_neg / (N_pos + 1e-8)
+neg_weight = 1
+</code></pre><p>This approach assigns a <strong>higher penalty</strong> to errors made on the minority class (i.e., misclassifying full parking records as not full), helping the model better learn to detect <strong>full-capacity cases</strong> despite their scarcity in the data.</p>
+<p>To improve prediction performance and prevent overfitting, <strong>hyperparameter tuning</strong> was performed for all models:</p>
+<ul>
+<li>For <strong>Linear Regression</strong>, <strong>Decision Tree</strong>, <strong>Random Forest</strong>, and <strong>XGBoost</strong>, we used <strong>GridSearch</strong> to explore parameter combinations.</li>
+<li>For the <strong>Graph Neural Network (GNN)</strong> model, we used the <strong>Optuna</strong> framework to optimize hyperparameters.</li>
+</ul>
+<p>These tuning strategies ensured that each model achieved <strong>optimal performance</strong> on the same dataset, providing a stable and reliable foundation for subsequent analysis.</p>
+<h6 id="324-detailed-comparison-of-each-strategy">3.2.4 Detailed Comparison of Each Strategy</h6>
+<p><strong>Strategy 1: Using All Features to Predict the Average Number of Available Parking Spaces for Each Time Interval</strong></p>
+<p>The table below (<strong>Table 4</strong>) presents the performance metrics of each model on the test set under this prediction strategy.</p>
+<figure><img src="/images/Parking16.png" width="400px">
+</figure>
+
+<p><strong>Strategy 2: Using All Features to Predict Whether Parking Spaces Are Available in Each Time Interval</strong></p>
+<p>The table below (<strong>Table 5</strong>) presents the performance metrics of each model on the test set under this prediction strategy.</p>
+<figure><img src="/images/Parking17.png" width="600px">
+</figure>
+
+<p><strong>Strategy 3: Using Features Selected by at Least 4 Models Among the Top 20 to Predict the Average Number of Available Parking Spaces</strong></p>
+<p>The table below (<strong>Table 6</strong>) presents the performance metrics of each model on the test set under this prediction strategy.</p>
+<figure><img src="/images/Parking18.png" width="400px">
+</figure>
+
+<p><strong>Strategy 4: Using Features Selected by at Least 3 Models Among the Top 20 to Predict the Average Number of Available Parking Spaces</strong></p>
+<p>The table below (<strong>Table 7</strong>) presents the performance metrics of each model on the test set under this prediction strategy.</p>
+<figure><img src="/images/Parking19.png" width="400px">
+</figure>
+
+<p><strong>Strategy 5: Using Features Selected by Elastic Net Based on the Classification Task (Parking Availability) to Predict the Average Number of Available Parking Spaces</strong></p>
+<p>The table below (<strong>Table 8</strong>) presents the performance metrics of each model on the test set under this prediction strategy.</p>
+<figure><img src="/images/Parking20.png" width="400px">
+</figure>
+
+<p><strong>Strategy 6: Using Features Selected by Elastic Net Based on the Regression Task (Average Available Parking Spaces) to Predict Whether Parking Spaces Are Available</strong></p>
+<p>The table below (<strong>Table 9</strong>) presents the performance metrics of each model on the test set under this prediction strategy.</p>
+<figure><img src="/images/Parking21.png" width="600px">
+</figure>
+
+<p><strong>Strategy 7: Using Features Selected by Elastic Net Based on the Regression Task (Average Available Parking Spaces), Combined with Cost-Sensitive Learning to Predict Whether Parking Spaces Are Available</strong></p>
+<p>The table below (<strong>Table 10</strong>) presents the performance metrics of each model on the test set under this prediction strategy.</p>
+<figure><img src="/images/Parking22.png" width="600px">
+</figure>
+
+<p><strong>Strategy 8: Using Features Selected by Elastic Net Based on the Regression Task (Average Available Parking Spaces), Applying SMOTE to Balance the Data, and Then Predicting Whether Parking Spaces Are Available</strong></p>
+<p>The table below (<strong>Table 11</strong>) presents the performance metrics of each model on the test set under this prediction strategy.
+<strong>Note:</strong> Due to model constraints, the <strong>GNN model</strong> could not be applied under this strategy.</p>
+<figure><img src="/images/Parking23.png" width="600px">
+</figure>
+
+<p>Based on the performance of each model in the two tasks (regression and classification), we visualized the numerical results as shown in the figures below (<strong>Figures 12–17</strong>).</p>
+<p><figure><img src="/images/Parking24.png" width="600px">
+</figure>
+
+<figure><img src="/images/Parking25.png" width="600px">
+</figure>
+
+<figure><img src="/images/Parking26.png" width="600px">
+</figure>
+
+<figure><img src="/images/Parking27.png" width="600px">
+</figure>
+
+<figure><img src="/images/Parking28.png" width="600px">
+</figure>
+
+<figure><img src="/images/Parking29.png" width="600px">
+</figure>
+</p>
+<h5 id="33-interpretation-of-results">3.3 Interpretation of Results</h5>
+<p>Based on model training results and feature importance rankings, we categorized the variables with significant influence on predicting parking space availability into three major groups: <strong>weather-related</strong>, <strong>time-related</strong>, and <strong>parking space-related</strong> features. These variables not only show strong explanatory power within the data but also align with real-world traffic and user behavior patterns.</p>
+<figure><img src="/images/Parking30.png" width="600px">
+</figure>
+
+<h6 id="331-weather-related-information">3.3.1 Weather-Related Information</h6>
+<p>Weather changes directly affect people’s choice of transportation. On rainy days or under conditions of low pressure and high humidity—often associated with discomfort and transportation inconvenience—people tend to drive to avoid exposure to wind, sun, or rain, which increases parking demand. For instance, high humidity and low atmospheric pressure often signal upcoming rain or unstable weather. These weather-related features ranked among the top in model importance, reflecting their influence on parking demand.</p>
+<h6 id="332-time-related-information">3.3.2 Time-Related Information</h6>
+<p>Time is a crucial factor in daily traffic and parking demand. During weekday rush hours or holidays, demand for parking often spikes, leading to reduced availability. In contrast, during off-peak periods such as midnight or midday on weekdays, more parking spaces are typically available. We used <code>half_hour_sin</code> and <code>half_hour_cos</code> to encode time as cyclical features, enabling the model to capture intra-day behavioral patterns. Additionally, the <code>day_off</code> feature helps the model identify holidays and special dates, further improving prediction accuracy.</p>
+<h6 id="333-parking-space-related-information">3.3.3 Parking Space-Related Information</h6>
+<p>The characteristics of the parking facility itself have a direct impact on availability. Parking lots with fewer total spaces are more likely to become full during high-demand periods. Geographic information, such as <strong>latitude</strong>, <strong>longitude</strong>, and <strong>district</strong>, helps the model capture whether a location is in a busy area. Moreover, the <strong>charging policy</strong> may affect user preferences—lots with lower fees are more likely to be filled during peak hours. These features help the model understand usage patterns under different conditions.</p>
+<h5 id="34-practical-value-of-the-model">3.4 Practical Value of the Model</h5>
+<p>The proposed model has strong potential for <strong>real-world applications</strong>, offering value to both <strong>individual users</strong> and <strong>parking lot operators</strong> by supporting planning, decision-making, and operational optimization.</p>
+<h6 id="341-for-general-users-improved-planning-efficiency-through-real-time-parking-insights">3.4.1. For General Users: Improved Planning Efficiency Through Real-Time Parking Insights</h6>
+<p>While common knowledge may suggest that “parking demand increases on rainy days,” or that “downtown areas are likely full on weekends or at night,” such assumptions are often vague and insufficient for precise planning. Our model combines <strong>weather</strong>, <strong>time</strong>, and <strong>location-specific features</strong> to provide real-time predictions of available parking spaces at specific time intervals.</p>
+<p>With this information, users can access <strong>concrete, location-specific insights</strong> during trip planning, reducing uncertainty when searching for parking. When the model predicts that a lot is likely to be full, it can also recommend <strong>nearby alternatives</strong> (e.g., “Lot 1 may be full, consider Lot 2” or “Lot 3 still has approximately 5 available spaces”), saving users time, cost, and stress caused by circling around.</p>
+<p>This improves <strong>information transparency</strong> and gives users more <strong>proactive control</strong>, ultimately enhancing the <strong>overall travel experience</strong>.</p>
+<h6 id="342-for-parking-operators-optimizing-capacity-allocation-and-strategy">3.4.2 For Parking Operators: Optimizing Capacity Allocation and Strategy</h6>
+<p>Beyond providing real-time parking information, the model also serves as a strategic tool for <strong>long-term planning and management</strong>. By analyzing historical and real-time trends, operators can identify areas frequently at or near capacity—such as around shopping districts, metro stations, or event venues. These insights help justify decisions to <strong>expand existing facilities</strong> or <strong>build new parking structures</strong>, thereby increasing service capacity and customer satisfaction.</p>
+<p>In addition, the model can support <strong>dynamic pricing</strong> and <strong>discount strategies</strong>. For example, operators may raise rates during predicted high-demand periods to manage congestion, or offer time-limited discounts during low-demand hours to boost usage.</p>
+<p>Ultimately, this approach facilitates <strong>optimal resource allocation</strong> and enhances the <strong>operational efficiency</strong> of parking facilities.</p>
+<h4 id="4-conclusion-and-future-work">4. Conclusion and Future Work</h4>
+<p>This study centers on the problem of <strong>predicting parking space availability</strong>, addressing a concrete and common issue in society: the supply and demand of parking. We successfully developed a preliminary predictive model that integrates <strong>weather forecasts</strong> and <strong>historical parking usage data</strong> to estimate parking availability for specific locations and time periods.</p>
+<p>By aggregating weather information, holiday data, and parking history, we reformulated the problem into both a <strong>regression</strong> and <strong>classification task</strong>. Applying the knowledge gained from the course—including <strong>data preprocessing</strong>, <strong>feature engineering</strong>, <strong>model training</strong>, and <strong>evaluation</strong>—we systematically assessed the performance of different models on this task.</p>
+<p>We employed <strong>Elastic Net regularization</strong> and <strong>ensemble feature voting</strong> to perform feature selection, effectively reducing the negative impact of high-dimensional features on model stability and performance. For the highly <strong>imbalanced classification task</strong>, we used <strong>SMOTE</strong> for oversampling the minority class and <strong>cost-sensitive learning</strong> to improve the model&rsquo;s sensitivity to full-capacity cases, thereby enhancing both its practicality and interpretability.</p>
+<p>Furthermore, our data splitting approach simulated realistic prediction scenarios by using <strong>time-based partitioning</strong>. For the GNN model, we also tailored the dataset to meet its structural requirements, ensuring <strong>fair comparisons across all models</strong>. Ultimately, we evaluated a variety of models and handling strategies, using multiple metrics—including <strong>MSE</strong>, <strong>Adjusted R²</strong>, <strong>F1 Score</strong>, <strong>ROC-AUC</strong>, and <strong>PRC-AUC</strong>—to thoroughly compare performance and ensure objectivity and practical value.</p>
+<p>The experimental results of this study demonstrate clear potential for practical application in <strong>helping users plan parking in advance</strong>. In future work, we aim to further <strong>improve prediction accuracy</strong>, <strong>expand coverage to multiple cities and parking types</strong>, and integrate <strong>real-time data</strong> and <strong>pricing information</strong> to develop an <strong>interactive parking recommendation system</strong>.</p>
+<p>In the long term, our goal is to integrate this system with <strong>smart traffic management platforms</strong> to improve <strong>urban traffic flow</strong> and <strong>parking efficiency</strong>, contributing to the broader vision of <strong>smart cities</strong>.</p>
 
         </div>
 
@@ -214,9 +467,6 @@
       <div class="col-lg-3 col-sm-6 mb-5">
         <h6 class="mb-4">Categories</h6>
         <ul class="list-unstyled">
-          <li class="mb-3"><a class="text-dark"
-              href="/categories/article/">Article</a>
-          </li>
           <li class="mb-3"><a class="text-dark"
               href="/categories/project/">Project</a>
           </li>

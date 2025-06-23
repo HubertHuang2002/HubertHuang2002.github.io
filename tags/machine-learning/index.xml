@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning on Hubert Huang | Personal Website</title>
+    <link>https://HubertHuang2002.github.io/tags/machine-learning/</link>
+    <description>Recent content in Machine Learning on Hubert Huang | Personal Website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Jun 2025 10:07:47 +0600</lastBuildDate>
+    <atom:link href="https://HubertHuang2002.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tainan Parking Space Prediction System</title>
+      <link>https://HubertHuang2002.github.io/blog/post-2/</link>
+      <pubDate>Sun, 22 Jun 2025 10:07:47 +0600</pubDate>
+      <guid>https://HubertHuang2002.github.io/blog/post-2/</guid>
+      <description>&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;&#xA;&lt;p&gt;This is our final project for the course &amp;ldquo;Manufacturing Data Science.&amp;rdquo;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

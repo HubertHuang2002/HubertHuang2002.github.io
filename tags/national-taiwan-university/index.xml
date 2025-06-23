@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>National Taiwan University on Hubert Huang | Personal Website</title>
-    <link>https://HubertHuang2002.github.io/tags/national-taiwan-university/</link>
+    <link>http://localhost:1313/tags/national-taiwan-university/</link>
     <description>Recent content in National Taiwan University on Hubert Huang | Personal Website</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 10 Dec 2024 10:07:47 +0600</lastBuildDate>
-    <atom:link href="https://HubertHuang2002.github.io/tags/national-taiwan-university/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/national-taiwan-university/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2024 TEDxNational Taiwan University Annual Exhibition</title>
-      <link>https://HubertHuang2002.github.io/blog/post-4/</link>
+      <link>http://localhost:1313/blog/post-4/</link>
       <pubDate>Tue, 10 Dec 2024 10:07:47 +0600</pubDate>
-      <guid>https://HubertHuang2002.github.io/blog/post-4/</guid>
+      <guid>http://localhost:1313/blog/post-4/</guid>
       <description>&lt;h2 id=&#34;brief-introduction&#34;&gt;Brief Introduction&lt;/h2&gt;&#xA;&lt;p&gt;In August 2024, I joined the TEDxNational Taiwan University organizing team as the director of public relations.&lt;/p&gt;</description>
     </item>
   </channel>
