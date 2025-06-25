@@ -154,7 +154,7 @@
 <p>Po-Cheng Huang, Yu-Yang Su, Chun-Han Lin, Chih-Chieh Yu, Fan-Jia (Hubert) Huang</p>
 <h4 id="project-objectives">Project Objectives</h4>
 <h6 id="provide-daily-news-summaries">Provide Daily News Summaries</h6>
-<p>Use <strong>LLM technologies</strong> and <strong>web crawling systems</strong> to automatically collect and filter the most important news from major news sources daily. These are then converted into concise and clear summaries, allowing users to quickly grasp key information and save time.</p>
+<p>Use <strong>LLM technologies</strong> and <strong>web scraping systems</strong> to automatically collect and filter the most important news from major news sources daily. These are then converted into concise and clear summaries, allowing users to quickly grasp key information and save time.</p>
 <h6 id="design-an-intuitive-and-user-friendly-interface">Design an Intuitive and User-Friendly Interface</h6>
 <p>Develop a simple yet engaging web design that enables users to easily browse daily news summaries. The interface should feature good readability and offer clear categorization of news types to enhance the user experience.</p>
 <h6 id="support-personalized-news-selection">Support Personalized News Selection</h6>
@@ -165,14 +165,14 @@
 <p>Through efficient filtering and summary generation, help users quickly understand significant news, improving their awareness and responsiveness to daily events—ideal for busy individuals with limited time.</p>
 <h4 id="system-architecture">System Architecture</h4>
 <p>The project is divided into two main components: <strong>frontend</strong> and <strong>backend</strong>.</p>
-<p>The backend is further split into Server, <strong>Web crawler</strong>, and <strong>AI API modules</strong>. The frontend is built using the <strong>React</strong> framework, while the backend uses <strong>Python</strong> for its web crawling capabilities.</p>
+<p>The backend is further split into Server, <strong>Web scraper</strong>, and <strong>AI API modules</strong>. The frontend is built using the <strong>React</strong> framework, while the backend uses <strong>Python</strong> for its web scraping capabilities.</p>
 <p>The following provides a brief introduction to the functions of each part of the program:</p>
 <h6 id="frontend-ui">Frontend UI</h6>
 <p>When the application is launched, <strong>React</strong> renders the main program <code>App.js</code> at the root location of the <code>index.html</code> page. The <code>App.js</code> file divides the page into several components, including <strong>Header</strong>, <strong>Sidebar</strong>, <strong>MainContent</strong>, and <strong>Footer</strong>, which together form the entire interface.</p>
 <p>Users can click the hamburger menu to toggle the visibility of the sidebar and select categories from the menu to trigger API requests, which display the corresponding news content.</p>
 <p>The styles for each component are stored in their respective CSS files for easier management, while static assets (such as icons and images) are sourced from the <code>public</code> folder and used directly in the application.</p>
 <h6 id="backend-server">Backend Server</h6>
-<p>First, the necessary functions from other backend components are imported, and then <strong>Flask</strong> is used to initialize and run the backend server. When the frontend sends a <code>GET</code> request to fetch news data, the <code>get_news()</code> function checks if the requested news category has been crawled within the past hour.</p>
+<p>First, the necessary functions from other backend components are imported, and then <strong>Flask</strong> is used to initialize and run the backend server. When the frontend sends a <code>GET</code> request to fetch news data, the <code>get_news()</code> function checks if the requested news category has been scraped within the past hour.</p>
 <pre tabindex="0"><code># API route to get news data
 @app.route(&#39;/api/news&#39;, methods=[&#39;GET&#39;])
 def get_news():
@@ -211,12 +211,12 @@ def get_news():
             return jsonify({&#34;error&#34;: &#34;Category not found&#34;}), 404
 </code></pre><ul>
 <li>If the data exists, it directly returns the cached news.</li>
-<li>If not, it sets the crawl time for that news category to the current time and calls <code>load_news()</code>.</li>
+<li>If not, it sets the scrape time for that news category to the current time and calls <code>load_news()</code>.</li>
 </ul>
 <pre tabindex="0"><code># Function to load news data for a specific category
 def load_news(target=&#34;&#34;):
     global news_data
-    # Crawl news data from ETtoday and CNA based on the target category
+    # Scrape news data from ETtoday and CNA based on the target category
     crawl_ettoday(target=target)
     crawl_cna(target=target)
 
@@ -258,15 +258,15 @@ def load_news(target=&#34;&#34;):
                 news[&#39;title&#39;] = title
                 news[&#39;content&#39;] = article
                 break
-</code></pre><p>The <code>load_news()</code> function executes a web crawler to gather news data and uses multithreading to concurrently generate summaries for multiple news articles. Finally, the <code>get_news()</code> function sends the processed data back to the frontend. For more details, refer to the <code>backend.py</code> file.</p>
-<h6 id="backend-web-crawler--the-central-news-agencycna">Backend Web crawler – the Central News Agency(CNA)</h6>
-<p>First, use the <code>requests</code> library to send an HTTP request to the CNA homepage URL <a href="https://www.cna.com.tw">(https://www.cna.com.tw)</a>. To prevent the website from blocking the crawler, include parameters in the headers and use <code>fake_useragent</code> to change the User-Agent with each request. This avoids reusing previously blocked User-Agents and ensures successful retrieval of valid responses.</p>
+</code></pre><p>The <code>load_news()</code> function executes a web scraper to gather news data and uses multithreading to concurrently generate summaries for multiple news articles. Finally, the <code>get_news()</code> function sends the processed data back to the frontend. For more details, refer to the <code>backend.py</code> file.</p>
+<h6 id="backend-web-scraper--the-central-news-agencycna">Backend Web Scraper – the Central News Agency(CNA)</h6>
+<p>First, use the <code>requests</code> library to send an HTTP request to the CNA homepage URL <a href="https://www.cna.com.tw">(https://www.cna.com.tw)</a>. To prevent the website from blocking the scraper, include parameters in the headers and use <code>fake_useragent</code> to change the User-Agent with each request. This avoids reusing previously blocked User-Agents and ensures successful retrieval of valid responses.</p>
 <p>Next, use <code>chardet</code> to detect and decode the encoding, and then parse the content using the <strong>BeautifulSoup</strong> library to extract the URLs of news category pages, storing them in the list <code>cat_hrefs</code>.</p>
 <p>Then, iterate through the URLs in <code>cat_hrefs</code>, sending HTTP requests to each category page as described in step 1. Parse each category page to extract the URLs of the five most recent news articles, storing them in the list <code>news_hrefs</code>.</p>
 <p>For each news article, send a request using the URLs in <code>news_hrefs</code>, retrieve the response, and parse each article&rsquo;s category, title, content, and URL. Store this data in the dictionary <code>news_contents</code>.</p>
-<p>Finally, after all content has been crawled, convert <code>news_contents</code> into a unified JSON format and send it to the backend for processing. This treats the crawler as an API that, when given parameters (such as the number of articles to crawl for each category), returns a standardized JSON response.</p>
-<h6 id="backend-web-crawler--ettoday">Backend Web crawler – ETtoday</h6>
-<p>First, define the crawling function <code>crawl_ettoday(article_limit)</code>, where the <code>article_limit</code> parameter is used to control the number of articles to be crawled, facilitating future team collaboration and adjustments.</p>
+<p>Finally, after all content has been scraped, convert <code>news_contents</code> into a unified JSON format and send it to the backend for processing. This treats the scraper as an API that, when given parameters (such as the number of articles to scrape for each category), returns a standardized JSON response.</p>
+<h6 id="backend-web-scraper--ettoday">Backend Web Scraper – ETtoday</h6>
+<p>First, define the scraping function <code>crawl_ettoday(article_limit)</code>, where the <code>article_limit</code> parameter is used to control the number of articles to be scraped, facilitating future team collaboration and adjustments.</p>
 <p>Next, set the basic parameters:</p>
 <ul>
 <li><code>url = &quot;https://www.ettoday.net/news/news-list.htm&quot;</code>: The ETtoday news list page URL.</li>
@@ -280,23 +280,23 @@ def load_news(target=&#34;&#34;):
 <li><strong>Category</strong> (<code>category_list</code>): Content from <code>&lt;em&gt;</code> tags.</li>
 <li><strong>Link</strong> (<code>link_list</code>): Relative paths to articles.</li>
 </ul>
-<p>Then, iterate through the <code>link_list</code>, sending HTTP requests to each article URL, and Crawl the content within the <code>.story</code> class (the class for the article body).</p>
+<p>Then, iterate through the <code>link_list</code>, sending HTTP requests to each article URL, and scrape the content within the <code>.story</code> class (the class for the article body).</p>
 <p>Next, extract paragraph content:</p>
 <ul>
 <li><code>find_all(&quot;p&quot;)</code>: Find all <code>&lt;p&gt;</code> tags, as each paragraph is usually wrapped in these tags.</li>
 <li><code>get_text(strip=True)</code>: Extract the plain text of each paragraph, with <code>strip=True</code> to remove extra whitespace at the start and end.</li>
 <li><code>&quot;\n&quot;.join(paragraphs)</code>: Combine paragraphs into a single string, with each paragraph separated by a newline to maintain the original structure and readability.</li>
 </ul>
-<p>Finally, categorize the Crawled content into <code>news_dict</code> and use <code>json.dump</code> to convert the dictionary into a JSON file for output.</p>
+<p>Finally, categorize the scraped content into <code>news_dict</code> and use <code>json.dump</code> to convert the dictionary into a JSON file for output.</p>
 <h6 id="backend-llm-large-language-model-api">Backend LLM (Large Language Model) API</h6>
 <p>Using the <strong>OpenAI</strong> library, the system sends a prompt that specifies the desired output format along with the news title and content to be summarized. The API processes this request and returns a response. The returned content is then processed using functions like <code>strip()</code> and <code>split()</code> to convert it into the desired Python format. For more details, refer to the code in <code>api.py</code>.</p>
 <h4 id="workflow">Workflow</h4>
 <p>The overall platform operates as illustrated:</p>
 <p><img src="/images/web01.png" alt=""></p>
-<p>When a user accesses the platform via the frontend, the system checks if there are web Crawling records from the past hour.</p>
-<p><strong>If records exist within the past hour</strong>, the system considers the news data sufficiently up-to-date and directly retrieves the stored web Crawling ing data from the backend server to display it on the frontend.</p>
-<p><strong>If no records exist within the past hour</strong>, the backend performs real-time web Crawling to collect the latest news data. This data is then processed using LLM to generate summaries, which are stored for future use and subsequently displayed on the frontend.</p>
-<p>This design was implemented because <strong>real-time web Crawling</strong> takes longer than initially anticipated. To avoid prolonged loading times during user interaction, we introduced this mechanism to balance efficiency and responsiveness.</p>
+<p>When a user accesses the platform via the frontend, the system checks if there are web scraping records from the past hour.</p>
+<p><strong>If records exist within the past hour</strong>, the system considers the news data sufficiently up-to-date and directly retrieves the stored web scraping ing data from the backend server to display it on the frontend.</p>
+<p><strong>If no records exist within the past hour</strong>, the backend performs real-time web scraping to collect the latest news data. This data is then processed using LLM to generate summaries, which are stored for future use and subsequently displayed on the frontend.</p>
+<p>This design was implemented because <strong>real-time web scraping</strong> takes longer than initially anticipated. To avoid prolonged loading times during user interaction, we introduced this mechanism to balance efficiency and responsiveness.</p>
 <h4 id="usage-instructions-and-demonstration">Usage Instructions and Demonstration</h4>
 <p>Please follow these steps to run the program:</p>
 <ol>

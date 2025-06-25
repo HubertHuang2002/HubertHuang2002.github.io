@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web Crawler on Hubert Huang | Personal Website</title>
-    <link>http://localhost:1313/tags/web-crawler/</link>
-    <description>Recent content in Web Crawler on Hubert Huang | Personal Website</description>
+    <title>Web Scraper on Hubert Huang | Personal Website</title>
+    <link>https://HubertHuang2002.github.io/tags/web-scraper/</link>
+    <description>Recent content in Web Scraper on Hubert Huang | Personal Website</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Dec 2024 10:07:47 +0600</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/web-crawler/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://HubertHuang2002.github.io/tags/web-scraper/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Real-Time News Summary Platform</title>
-      <link>http://localhost:1313/blog/post-1/</link>
+      <link>https://HubertHuang2002.github.io/blog/post-1/</link>
       <pubDate>Thu, 19 Dec 2024 10:07:47 +0600</pubDate>
-      <guid>http://localhost:1313/blog/post-1/</guid>
+      <guid>https://HubertHuang2002.github.io/blog/post-1/</guid>
       <description>&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;&#xA;&lt;p&gt;This is our final project for the course &amp;ldquo;Web Application Programming.&amp;rdquo;&lt;/p&gt;</description>
     </item>
   </channel>
