@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubert's Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #1e1e1e;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* home page */
+        .home-section {
+            text-align: center;
+        }
+
+        .profile-photo-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: #333333;
+            border: 2px solid #404040;
+            padding: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            font-size: 14px;
+            border: 1px solid #3a3a3a;
+        }
+
+        h1 {
+            color: #f0f0f0;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 32px;
+            background: transparent;
+            color: #e0e0e0;
+            border: 1px solid #484848;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-btn:hover {
+            background: #f0f0f0;
+            color: #2a2a2a;
+            border-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* pages */
+        .page-section {
+            display: none;
+            animation: slideIn 0.5s ease-in;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .back-btn {
+            background: transparent;
+            padding: 10px 24px;
+            color: #a0a0a0;
+            border: 1px solid #484848;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            color: #f0f0f0;
+            border-color: #606060;
+            transform: translateX(-3px);
+        }
+
+        /* self-introduction page */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-photo {
+            flex: 0 0 250px;
+            height: 250px;
+            background: #252525;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            color: #f0f0f0;
+            margin-bottom: 20px;
+            font-weight: 300;
+            font-size: 2em;
+        }
+
+        .about-text p {
+            color: #b8b8b8;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        /* experience page */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #484848;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 0 0 45%;
+            background: #333333;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #404040;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            border: 2px solid #2a2a2a;
+        }
+
+        .timeline-date {
+            font-weight: 400;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .timeline-title {
+            color: #f0f0f0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        .timeline-description {
+            color: #a0a0a0;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* project page */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: #333333;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #585858;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-photo {
+            width: 100%;
+            height: 200px;
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            border-bottom: 1px solid #404040;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            color: #f0f0f0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        .project-description {
+            color: #a0a0a0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-weight: 300;
+            font-size: 0.95em;
+        }
+
+        .github-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: transparent;
+            color: #e0e0e0;
+            text-decoration: none;
+            border: 1px solid #484848;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .github-link:hover {
+            background: #e0e0e0;
+            color: #2a2a2a;
+            border-color: #e0e0e0;
+        }
+
+        /* contact page */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-header {
+            margin-bottom: 50px;
+        }
+
+        .contact-header h2 {
+            color: #f0f0f0;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .contact-header p {
+            color: #a0a0a0;
+            font-size: 1em;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            background: #333333;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-item:hover {
+            border-color: #585858;
+            background: #383838;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: #252525;
+            border: 1px solid #484848;
+        }
+
+        .contact-icon.gmail {
+            border-color: #EA4335;
+        }
+
+        .contact-icon.linkedin {
+            border-color: #0077B5;
+        }
+
+        .contact-icon.github {
+            border-color: #808080;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #e0e0e0;
+        }
+
+        .contact-info {
+            text-align: left;
+            flex: 1;
+        }
+
+        .contact-title {
+            font-size: 1.1em;
+            color: #f0f0f0;
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+
+        .contact-text {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            font-weight: 300;
+        }
+
+        .contact-arrow {
+            color: #808080;
+            font-size: 18px;
+        }
+
+        /* consistent title style */
+        h2 {
+            color: #f0f0f0;
+            font-weight: 300;
+        }
+
+        /* responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                margin-left: 60px;
+            }
+
+            .timeline-content {
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-btn {
+                width: 200px;
+            }
+
+            .contact-item {
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .contact-icon {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* scrollbar style */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #252525;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #484848;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #606060;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;         
+        }
+
+        .project-content {
+            flex: 1;               
+            display: flex;
+            flex-direction: column;
+            padding: 20px 20px 24px;
+            align-items: flex-start;
+        }
+
+        .github-link {
+            margin-top: auto; 
+            align-self: flex-start;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- home page -->
+        <section id="home" class="home-section page-section active">
+            <div class="profile-photo-container">
+                <div class="profile-photo">
+                    <img src="images/profile.jpg" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+            </div>
+            <h1>Hubert Huang</h1>
+            <p class="subtitle">Data Enthusiast</p>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="showPage('about')">About</button>
+                <button class="nav-btn" onclick="showPage('experience')">Experience</button>
+                <button class="nav-btn" onclick="showPage('projects')">Projects</button>
+                <button class="nav-btn" onclick="showPage('contact')">Contact</button>
+            </div>
+        </section>
+
+        <!-- about page -->
+        <section id="about" class="page-section">
+            <button class="back-btn" onclick="showPage('home')">← Home</button>
+            <div class="about-content">
+                <div class="about-photo">
+                    <img src="images/profile.jpg" alt="About" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>
+                        I am Hubert Huang, currently studying at National Taiwan University, 
+                        majoring in Business Administration, double majoring in Data Science and Computational Finance, 
+                        and minoring in Computer Science.   
+                    </p>
+                    <p>
+                        My primary expertise lies in large-scale data processing and optimization methods in operations research, 
+                        with a strong foundation in programming. 
+                        I also excel in teamwork and consistently strive to pursue interdisciplinary learning opportunities.
+                    </p>
+                    <p>
+                        If you have any other questions, don't hesitate to reach out. I'll reply as soon as I can.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- experience page -->
+        <section id="experience" class="page-section">
+            <button class="back-btn" onclick="showPage('home')">← Home</button>
+            <h2 style="text-align: center; margin-bottom: 40px;">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2025 - Present</div>
+                        <div class="timeline-title">Information Technology Intern</div>
+                        <div class="timeline-description">
+                            DBS Bank
+                            <br>
+                            Taipei, Taiwan
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2025 - Present</div>
+                        <div class="timeline-title">Director of Academic Affairs</div>
+                        <div class="timeline-description">
+                            NTU Data Analytics Club
+                            <br>
+                            Taipei, Taiwan
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Feb 2025 - Jun 2025</div>
+                        <div class="timeline-title">Teaching Assistant,<br>(MGT1006) Programming for<br>Business Computing</div>
+                        <div class="timeline-description">
+                            Department of Information Management, National Taiwan University
+                            <br>
+                            Taipei, Taiwan
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Aug 2024 - May 2025</div>
+                        <div class="timeline-title">Director of Public Relations</div>
+                        <div class="timeline-description">
+                            TEDxNationalTaiwanUniversity
+                            <br>
+                            Taipei, Taiwan
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Aug 2024 - May 2025</div>
+                        <div class="timeline-title">President</div>
+                        <div class="timeline-description">
+                            NTU Table Tennis Club
+                            <br>
+                            Taipei, Taiwan
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jul 2024 - Aug 2024</div>
+                        <div class="timeline-title">Trend Analyst Intern</div>
+                        <div class="timeline-description">
+                            Inventec Corporation
+                            <br>
+                            Taipei, Taiwan
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sep 2023 - Jan 2024</div>
+                        <div class="timeline-title">Volunteer Math Teacher</div>
+                        <div class="timeline-description">
+                            NTU Green Tree Club.
+                            <br>
+                            Taipei, Taiwan
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- project page -->
+        <section id="projects" class="page-section">
+            <button class="back-btn" onclick="showPage('home')">← Home</button>
+            <h2 style="text-align: center;">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-photo"><img src="images/project3.png" alt="Project 3" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Tainan Parking Space Prediction System</h3>
+                        <p class="project-description">
+                            Tainan Parking Space Prediction System leverages machine learning models to predict the number of available parking spots 
+                            in specific areas of Tainan using weather forecasts and historical parking usage data.
+                        </p>
+                        <a href="https://github.com/HubertHuang2002/Tainan_Parking_Space_Prediction_System" class="github-link" target="_blank">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-photo"><img src="images/project2.png" alt="Project 2" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Real-Time News Summary Platform</h3>
+                        <p class="project-description">
+                            Real-Time News Summary Platform is a website that leverages a large language model API to fetch, 
+                            summarize, and categorize real-time news.
+                        </p>
+                        <a href="https://github.com/HubertHuang2002/Real-Time_News_Summary_Platform" class="github-link" target="_blank">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-photo"><img src="images/project1.png" alt="Project 1" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Prioritizer</h3>
+                        <p class="project-description">
+                            Task_Prioritizer is a side project designed to automate and intelligently prioritize tasks 
+                            using a large language model API and the user's Google Calendar Secret Address (iCal Format).
+                        </p>
+                        <a href="https://github.com/HubertHuang2002/Task_Prioritizer?tab=readme-ov-file#task_prioritizer" class="github-link" target="_blank">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- contact page -->
+        <section id="contact" class="page-section">
+            <button class="back-btn" onclick="showPage('home')">← Home</button>
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h2>Contact</h2>
+                    <p>Feel free to reach out to me through any of the channels below. 
+                        <br>I look forward to connecting with you.</p>
+                </div>
+                
+                <div class="contact-items">
+                    <!-- Gmail -->
+                    <a href="mailto:107zzshhuang@gmail.com" class="contact-item">
+                        <div class="contact-icon gmail">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 18h-2V9.25L12 13L6 9.25V18H4V6h1.2l6.8 4.25L18.8 6H20m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-title">Gmail</div>
+                            <div class="contact-text">107zzshhuang@gmail.com</div>
+                        </div>
+                        <div class="contact-arrow">→</div>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/huberthuang2002/" target="_blank" class="contact-item">
+                        <div class="contact-icon linkedin">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-title">LinkedIn</div>
+                            <div class="contact-text">Fan-Jia (Hubert) Huang</div>
+                        </div>
+                        <div class="contact-arrow">→</div>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/HubertHuang2002" target="_blank" class="contact-item">
+                        <div class="contact-icon github">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-title">GitHub</div>
+                            <div class="contact-text">HubertHuang2002</div>
+                        </div>
+                        <div class="contact-arrow">→</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // display the selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+
+            // scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // page loading animation
+        window.addEventListener('load', () => {
+            document.querySelector('.container').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.container').style.transition = 'opacity 0.5s ease-in';
+                document.querySelector('.container').style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
