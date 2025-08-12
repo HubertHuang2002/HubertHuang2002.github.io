@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hubert Huang's personal website.">
     <title>Hubert's Website</title>
 
     <link rel="icon" type="image/png" href="favicon.png">
@@ -460,22 +461,27 @@
             }
 
             .timeline::before {
-                left: 30px;
+                left: 20px;
             }
 
             .timeline-item {
                 flex-direction: column !important;
-                padding-left: 60px;
+                padding-left: 50px;
                 position: relative;
+                align-items: flex-start;
             }
 
             .timeline-content {
                 text-align: left !important;
                 margin-left: 0;
+                width: 100%; 
+                word-wrap: break-word; 
+                overflow-wrap: break-word; 
+                max-width: calc(100vw - 120px); 
             }
 
             .timeline-dot {
-                left: 30px;
+                left: 20px;
                 transform: translateX(-50%);
             }
 
