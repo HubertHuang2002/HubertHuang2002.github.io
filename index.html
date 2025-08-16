@@ -728,8 +728,8 @@
                 particles.slice(i+1).forEach(b => {
                     const d = Math.hypot(a.x-b.x, a.y-b.y);
                     if(d < 100){
-                        ctx.strokeStyle = `rgba(229, 231, 235, ${0.10 * (1 - d/100)})`;
-                        ctx.lineWidth = 0.5;
+                        ctx.strokeStyle = `rgba(229, 231, 235, ${0.95 * (1 - d/100)})`;
+                        ctx.lineWidth = 0.9;
                         ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
                     }
                 });
