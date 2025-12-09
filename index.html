@@ -43,49 +43,19 @@
             position: relative;
         }
 
-        /* Animated Background */
-        .bg-animation{
+        #wave-canvas {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
-            opacity: .35;
-        }
-        .bg-animation::before,
-        .bg-animation::after{
-            content:'';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            animation: float 20s infinite ease-in-out;
-        }
-        .bg-animation::before{
-            width: 600px; height: 600px;
-            background: var(--gradient-1);
-            top: -20%; left: -10%;
-        }
-        .bg-animation::after{
-            width: 520px; height: 520px;
-            background: var(--gradient-2);
-            bottom: -20%; right: -10%;
-            animation-delay: -10s;
-        }
-        @keyframes float{
-            0%,100%{ transform: translate(0,0) rotate(0deg); }
-            33%{ transform: translate(30px,-30px) rotate(120deg); }
-            66%{ transform: translate(-20px,20px) rotate(240deg); }
+            background: var(--bg-dark);
+            pointer-events: none; 
         }
 
-        /* Particle Background */
-        #particles-canvas{
-            position: fixed; inset: 0;
-            width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
-        }
-
-        /* Container */
         .container{ max-width: 1200px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
 
-        /* Navigation */
         .nav-header{
             position: fixed; top: 0; left: 0; right: 0;
             background: rgba(15, 17, 21, 0.82);
@@ -152,7 +122,6 @@
         .typing-effect{ display:inline-block; border-right: 3px solid var(--primary); animation: blink 1s step-end infinite; }
         @keyframes blink{ 50%{ border-color: transparent; } }
 
-        /* Sections */
         .section{ padding: 100px 0; position: relative; }
         .section-title{
             font-size: 2.5rem; text-align:center; margin-bottom: 60px; position: relative;
@@ -162,7 +131,6 @@
             width: 60px; height: 3px; background: var(--gradient-1);
         }
 
-        /* About */
         .about-content{
             display:grid; grid-template-columns: 1fr 2fr; gap:60px; align-items:center;
             background: var(--bg-card); border-radius:20px; padding:40px; backdrop-filter: blur(10px);
@@ -179,7 +147,6 @@
         .skill-tag{ background: rgba(192, 197, 208, 0.10); border: 1px solid var(--primary); border-radius: 12px; display:flex; align-items:center; justify-content:center; height:56px; padding:0 12px; text-align:center; font-size:.95rem; color: var(--primary-light); transition: all .3s ease; }
         .skill-tag:hover{ background: var(--primary); color: #0b0c0f; transform: translateY(-2px); }
 
-        /* Timeline */
         .timeline{ position: relative; padding: 20px 0; }
         .timeline::before{
             content:''; position:absolute; left:50%; top:0; bottom:0; width:2px;
@@ -207,7 +174,6 @@
         .timeline-title{ font-size:1.3rem; margin-bottom:10px; color: var(--text-primary); }
         .timeline-description{ color: var(--text-secondary); line-height:1.6; }
 
-        /* Projects */
         .projects-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap:30px; }
         .project-card{
             background: var(--bg-card); border-radius:20px; overflow:hidden; border:1px solid var(--border);
@@ -238,7 +204,6 @@
         .project-link{ color: var(--primary-light); text-decoration:none; display:flex; align-items:center; gap:5px; transition: color .3s ease; }
         .project-link:hover{ color: var(--primary-dark); }
 
-        /* Contact */
         .contact-content{ max-width:800px; margin:0 auto; text-align:center; }
         .contact-intro{ font-size:1.2rem; color: var(--text-secondary); margin-bottom:50px; }
         .contact-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:30px; }
@@ -261,21 +226,17 @@
         .contact-title{ font-size:1.2rem; margin-bottom:10px; position:relative; z-index:1; }
         .contact-text{ color: var(--text-secondary); font-size:.95rem; position:relative; z-index:1; }
 
-        /* Footer */
         .footer{ text-align:center; padding:40px 20px; border-top:1px solid var(--border); margin-top:100px; }
         .footer-text{ color: var(--text-secondary); font-size:.9rem; }
         .footer-heart{ color: var(--accent); animation: heartbeat 1.5s ease infinite; }
         @keyframes heartbeat{ 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.1);} }
 
-        /* Mobile Menu */
         .mobile-menu-btn{ display:none; background:none; border:none; color: var(--text-primary); font-size:1.5rem; cursor:pointer; }
 
-        /* Scroll Progress */
         .scroll-progress{
             position:fixed; top:0; left:0; height:3px; background: var(--gradient-1); z-index:1001; transition: width .1s ease;
         }
 
-        /* Responsive */
         @media (max-width: 768px){
             .nav-menu{
                 display:none; position:fixed; top:60px; left:0; right:0;
@@ -298,7 +259,6 @@
             .contact-grid{ grid-template-columns: 1fr; }
         }
 
-        /* Loader */
         .loader{ position:fixed; inset:0; background: var(--bg-dark); display:flex; align-items:center; justify-content:center; z-index:9999; transition: opacity .5s ease; }
         .loader.hidden{ opacity:0; pointer-events:none; }
         .loader-circle{
@@ -307,32 +267,26 @@
         }
         @keyframes spin{ from{ transform: rotate(0deg);} to{ transform: rotate(360deg);} }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar{ width:10px; }
         ::-webkit-scrollbar-track{ background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb{ background: var(--primary); border-radius:5px; }
         ::-webkit-scrollbar-thumb:hover{ background: var(--primary-dark); }
     
-@media (max-width: 480px){
-  .skills-grid{ grid-auto-rows:52px; }
-  .skill-tag{ height:52px; }
-}
-</style>
+    @media (max-width: 480px){
+      .skills-grid{ grid-auto-rows:52px; }
+      .skill-tag{ height:52px; }
+    }
+    </style>
 </head>
 <body>
-    <!-- Loading Screen -->
     <div class="loader" id="loader">
         <div class="loader-circle"></div>
     </div>
 
-    <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Animated Background -->
-    <div class="bg-animation"></div>
-    <canvas id="particles-canvas"></canvas>
+    <canvas id="wave-canvas"></canvas>
 
-    <!-- Navigation -->
     <nav class="nav-header" id="navHeader">
         <div class="nav-content">
             <div class="logo">Hubert Huang</div>
@@ -354,7 +308,6 @@
         </div>
     </section>
 
-    <!-- About -->
     <section class="section" id="about">
         <div class="container">
             <h2 class="section-title">About</h2>
@@ -363,16 +316,18 @@
                     <img src="images/profile2.jpg" alt="Hubert Huang">
                 </div>
                 <div class="about-text">
-                    <h3>Bridging Business &amp; Technology</h3>
+                    <h3>Integrating Analytics, Optimization, and Strategy</h3>
                     <p>
                         I am Hubert Huang, currently studying at National Taiwan University,
-                        majoring in <strong><em>Business Administration</em></strong>, 
-                        double majoring in <strong><em>Data Science and Computational Finance</em></strong>,
-                        and minoring in <strong><em>Computer Science and Information Engineering</em></strong>.
+                        majoring in Business Administration, 
+                        double majoring in Data Science and Computational Finance,
+                        and minoring in Computer Science and Information Engineering.
                     </p>
                     <p>
-                        My expertise lies in applying machine learning techniques to data analysis and optimization methods in operations research, with a solid foundation in statistics. 
-                        I have served as a university teaching assistant for Python and completed internships involving data processing, ensuring strong programming skills.
+                        My expertise lies in applying machine learning techniques to data analysis and optimization methods in operations research, 
+                        supported by a solid foundation in statistics. I am also a research assistant at the Institute of Statistical Science, Academia Sinica, 
+                        where my work focuses on machine learning and data science. I have served as a university teaching assistant for Python and completed internships involving 
+                        large-scale data processing, which further strengthened my programming skills.
                     </p>
                     <p>
                         I am also adept at teamwork and leadership, having served multiple terms as president and director of student organizations. 
@@ -382,26 +337,32 @@
                         If you have any further questions or are interested in collaborating, please feel free to contact me, and I will respond as soon as possible.
                     </p>
                     <div class="skills-grid">
-                        <div class="skill-tag">Machine Learning</div>
-                        <div class="skill-tag">Data Analysis</div>
+                        <div class="skill-tag">Applied Machine Learning</div>
+                        <div class="skill-tag">Statistical Data Analysis</div>
                         <div class="skill-tag">Operations Research</div>
-                        <div class="skill-tag">Statistical Analysis</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience -->
     <section class="section" id="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
+                        <div class="timeline-date">Dec 2025 - Present</div>
+                        <div class="timeline-title">Research Assistant</div>
+                        <div class="timeline-description">Institute of Statistical Science, Academia Sinica<br>Taipei, Taiwan</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
                         <div class="timeline-date">Jun 2025 - Aug 2025</div>
                         <div class="timeline-title">Information Technology Intern</div>
-                        <div class="timeline-description">DBS Bank<br>Taipei, Taiwan</div>
+                        <div class="timeline-description">DBS Bank, Group Technology<br>Taipei, Taiwan</div>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -457,7 +418,6 @@
         </div>
     </section>
 
-    <!-- Projects -->
     <section class="section" id="projects">
         <div class="container">
             <h2 class="section-title">Projects</h2>
@@ -593,7 +553,6 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section class="section" id="contact">
         <div class="container">
             <h2 class="section-title">Contact</h2>
@@ -647,7 +606,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <p class="footer-text">
             © 2025 Hubert Huang
@@ -655,36 +613,33 @@
     </footer>
 
     <script>
-        // Loader
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
             }, 500);
         });
 
-        // Typing Effect
-        const texts = ['Data Science', 'Operations Research'];
+        const texts = ['Data Science', 'Statistics', 'Operations Research'];
         let textIndex = 0, charIndex = 0, isDeleting = false;
         const typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000;
 
-        function typeText(){
+        function typeText() {
             const currentText = texts[textIndex];
             const typingElement = document.getElementById('typingText');
 
-            if(!isDeleting){
+            if (!isDeleting) {
                 typingElement.textContent = currentText.substring(0, charIndex + 1);
                 charIndex++;
-                if(charIndex === currentText.length){ isDeleting = true; setTimeout(typeText, pauseTime); return; }
-            }else{
+                if (charIndex === currentText.length) { isDeleting = true; setTimeout(typeText, pauseTime); return; }
+            } else {
                 typingElement.textContent = currentText.substring(0, charIndex - 1);
                 charIndex--;
-                if(charIndex === 0){ isDeleting = false; textIndex = (textIndex + 1) % texts.length; }
+                if (charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; }
             }
             setTimeout(typeText, isDeleting ? deletingSpeed : typingSpeed);
         }
         typeText();
 
-        // Scroll Progress
         window.addEventListener('scroll', () => {
             const scrollProgress = document.getElementById('scrollProgress');
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -692,10 +647,9 @@
             scrollProgress.style.width = scrolled + '%';
         });
 
-        // Navigation Scroll Effect
         window.addEventListener('scroll', () => {
             const navHeader = document.getElementById('navHeader');
-            if(window.scrollY > 50){ navHeader.classList.add('scrolled'); } else { navHeader.classList.remove('scrolled'); }
+            if (window.scrollY > 50) { navHeader.classList.add('scrolled'); } else { navHeader.classList.remove('scrolled'); }
         });
 
         const sections = document.querySelectorAll('section[id]');
@@ -704,15 +658,14 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if(scrollY >= (sectionTop - 200)){ current = section.getAttribute('id'); }
+                if (scrollY >= (sectionTop - 200)) { current = section.getAttribute('id'); }
             });
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if(link.getAttribute('href').substring(1) === current){ link.classList.add('active'); }
+                if (link.getAttribute('href').substring(1) === current) { link.classList.add('active'); }
             });
         });
 
-        // Smooth Scroll + close mobile menu
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -722,7 +675,6 @@
             });
         });
 
-        // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navMenu = document.getElementById('navMenu');
         mobileMenuBtn.addEventListener('click', () => {
@@ -730,10 +682,9 @@
             mobileMenuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Intersection Observer for Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting){
+                if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
@@ -745,56 +696,145 @@
             observer.observe(el);
         });
 
-        // Particle Animation (silver)
-        const canvas = document.getElementById('particles-canvas');
+        const canvas = document.getElementById('wave-canvas');
         const ctx = canvas.getContext('2d');
-        function resizeCanvas(){
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        const particles = [];
-        const particleCount = 50;
+        
+        let width, height;
+        let points = [];
+        let horizonY = 0; 
+        
+        const config = {
+            cols: 0,            
+            rows: 0,            
+            spacing: 25,     
+            waveHeight: 60,    
+            speed: 0.00001,    
+            fov: 700,           
+            cameraHeight: 220, 
+            cameraZ: 200      
+        };
 
-        class Particle{
-            constructor(){
-                this.x = Math.random()*canvas.width;
-                this.y = Math.random()*canvas.height;
-                this.size = Math.random()*2 + 1;
-                this.speedX = Math.random()*0.5 - 0.25;
-                this.speedY = Math.random()*0.5 - 0.25;
-                this.opacity = Math.random()*0.5 + 0.2;
+        let tick = 0;
+
+        class Point {
+            constructor(x, z) {
+                this.x = x;
+                this.z = z;
+                this.y = 0;
+                this.screenX = 0;
+                this.screenY = 0;
+                this.scale = 0;
             }
-            update(){
-                this.x += this.speedX; this.y += this.speedY;
-                if(this.x > canvas.width) this.x = 0;
-                if(this.x < 0) this.x = canvas.width;
-                if(this.y > canvas.height) this.y = 0;
-                if(this.y < 0) this.y = canvas.height;
-            }
-            draw(){
-                ctx.fillStyle = `rgba(229, 231, 235, ${this.opacity})`; // gray-200
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
+
+            update(tick) {
+                const mainWave = Math.sin(this.x * 0.013 + tick);
+                const secondaryWave = Math.sin(this.z * 0.008 + tick * 0.5);
+
+                this.y = (mainWave + secondaryWave) * 0.5 * config.waveHeight;
+
+                const depth = this.z + config.cameraZ;
+                this.scale = config.fov / (config.fov + depth);
+                
+                const gridWidth = config.cols * config.spacing;
+                const offsetX = this.x - gridWidth / 2; 
+                
+                const horizonX = width / 2;
+                
+                this.screenX = offsetX * this.scale + horizonX;
+                this.screenY = (this.y + config.cameraHeight) * this.scale + horizonY;
             }
         }
-        function initParticles(){ for(let i=0;i<particleCount;i++){ particles.push(new Particle()); } }
-        function animateParticles(){
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            particles.forEach(p=>{ p.update(); p.draw(); });
-            // connections
-            particles.forEach((a, i) => {
-                particles.slice(i+1).forEach(b => {
-                    const d = Math.hypot(a.x-b.x, a.y-b.y);
-                    if(d < 100){
-                        ctx.strokeStyle = `rgba(229, 231, 235, ${0.95 * (1 - d/100)})`;
-                        ctx.lineWidth = 0.9;
-                        ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+
+        function init() {
+            points = [];
+            for (let z = 0; z < config.rows; z++) {
+                for (let x = 0; x < config.cols; x++) {
+                    const px = x * config.spacing;
+                    const pz = z * config.spacing;
+                    points.push(new Point(px, pz));
+                }
+            }
+        }
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+
+            if (width < 768) {
+                config.spacing = 35; 
+            } else {
+                config.spacing = 25;
+            }
+
+            horizonY = height * 0.65;
+
+            config.cols = Math.ceil(width / config.spacing) + 20; 
+            
+            config.rows = 60; 
+            
+            init();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            
+            points.forEach(p => p.update(tick));
+
+            for (let i = 0; i < points.length; i++) {
+                const p = points[i];
+                
+                if (p.screenY < horizonY - 50) continue;
+
+                const c = i % config.cols;
+                const r = Math.floor(i / config.cols);
+
+                const depthRatio = r / config.rows;
+                const widthRatio = c / config.cols;
+
+                const hue = 210 + (widthRatio * 60);
+                
+                let alpha = (depthRatio * 0.8) + 0.1;
+                
+                if(c < 5 || c > config.cols - 5) alpha *= 0.5;
+
+                ctx.strokeStyle = `hsla(${hue}, 80%, 60%, ${alpha * 0.5})`;
+                ctx.fillStyle = `hsla(${hue}, 90%, 60%, ${alpha})`;
+
+                ctx.beginPath();
+                ctx.arc(p.screenX, p.screenY, p.scale * 1.5, 0, Math.PI * 2);
+                ctx.fill();
+
+                if (c < config.cols - 1) {
+                    const rightP = points[i + 1];
+                    if (rightP) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.screenX, p.screenY);
+                        ctx.lineTo(rightP.screenX, rightP.screenY);
+                        ctx.stroke();
                     }
-                });
-            });
-            requestAnimationFrame(animateParticles);
+                }
+
+                if (r < config.rows - 1) {
+                    const downP = points[i + config.cols];
+                    if (downP) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.screenX, p.screenY);
+                        ctx.lineTo(downP.screenX, downP.screenY);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            tick += config.speed * 1000;
+            requestAnimationFrame(draw);
         }
-        initParticles(); animateParticles();
-        window.addEventListener('resize', resizeCanvas);
+
+        window.addEventListener('resize', () => {
+            resize();
+        });
+
+        resize();
+        draw();
     </script>
 </body>
 </html>
