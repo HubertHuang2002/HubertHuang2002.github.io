@@ -15,18 +15,18 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root{
-            --primary: #c0c5d0;           
-            --primary-light: #e5e7eb;     
-            --primary-dark: #9aa1ac;     
-            --accent: #ef4444;            
-            --bg-dark: #0f1115;           
+            --primary: #c0c5d0;
+            --primary-light: #e5e7eb;
+            --primary-dark: #9aa1ac;
+            --accent: #ef4444;
+            --bg-dark: #0f1115;
             --bg-card: rgba(20, 22, 26, 0.72);
-            --text-primary: #f3f4f6;    
-            --text-secondary: #9ca3af;    
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
             --border: rgba(156, 163, 175, 0.16);
 
-            --gradient-1: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);    
-            --gradient-2: linear-gradient(135deg, #d1d5db 0%, #6b7280 100%);      
+            --gradient-1: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --gradient-2: linear-gradient(135deg, #d1d5db 0%, #6b7280 100%);
 
             --shadow-soft: 0 10px 30px rgba(192, 197, 208, 0.22);
             --shadow-strong: 0 20px 50px rgba(192, 197, 208, 0.28);
@@ -43,16 +43,47 @@
             position: relative;
         }
 
+        section{ scroll-margin-top: 90px; }
+
         #wave-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
             background: var(--bg-dark);
-            pointer-events: none; 
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity .25s ease;
         }
+        body.bg-anim-on #wave-canvas{ opacity: 1; }
+
+        .bg-fab{
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 2000;
+            appearance: none;
+            border: 1px solid rgba(192, 197, 208, 0.28);
+            background: rgba(20, 22, 26, 0.62);
+            color: var(--text-primary);
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-size: .92rem;
+            cursor: pointer;
+            transition: transform .15s ease, background .25s ease, border-color .25s ease, opacity .25s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.35);
+            user-select: none;
+        }
+        .bg-fab:hover{
+            border-color: rgba(192, 197, 208, 0.55);
+            background: rgba(20, 22, 26, 0.78);
+            transform: translateY(-1px);
+        }
+        .bg-fab:active{ transform: translateY(0); }
 
         .container{ max-width: 1200px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
 
@@ -94,16 +125,10 @@
 
         .hero{
             min-height: 100vh; display:flex; align-items:center; justify-content:center;
-            padding: 80px 20px; position: relative;
+            padding: 80px 20px; position: relative; z-index: 1;
         }
         .hero-content{ text-align:center; animation: fadeInUp 1s ease; }
         @keyframes fadeInUp{ from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
-
-        .profile-container{ width:200px; height:200px; margin:0 auto 40px; position: relative; }
-        .profile-ring{ position:absolute; inset:-3px; background: var(--gradient-1); border-radius:50%; animation: rotate 3s linear infinite; }
-        @keyframes rotate{ from{transform:rotate(0);} to{transform:rotate(360deg);} }
-        .profile-image{ position:relative; width:100%; height:100%; border-radius:50%; background: var(--bg-dark); padding:3px; z-index:1; }
-        .profile-image img{ width:100%; height:100%; border-radius:50%; object-fit: cover; }
 
         h1{
             font-size: 3.5rem; margin-bottom: 20px;
@@ -122,7 +147,7 @@
         .typing-effect{ display:inline-block; border-right: 3px solid var(--primary); animation: blink 1s step-end infinite; }
         @keyframes blink{ 50%{ border-color: transparent; } }
 
-        .section{ padding: 100px 0; position: relative; }
+        .section{ padding: 100px 0; position: relative; z-index: 1; }
         .section-title{
             font-size: 2.5rem; text-align:center; margin-bottom: 60px; position: relative;
         }
@@ -153,18 +178,14 @@
             background: linear-gradient(to bottom, transparent, var(--primary), transparent);
             transform: translateX(-50%);
         }
-        .timeline-item{
-            position:relative; margin:60px 0; display:flex; align-items:center; opacity:0; animation: fadeInUp .6s ease forwards;
-        }
+        .timeline-item{ position:relative; margin:60px 0; display:flex; align-items:center; opacity:0; }
         .timeline-item:nth-child(even){ flex-direction: row-reverse; }
 
         .timeline-content{
             flex: 0 0 45%; background: var(--bg-card); padding:30px; border-radius:15px; border:1px solid var(--border);
             backdrop-filter: blur(10px); position:relative; transition: all .3s ease;
         }
-        .timeline-content:hover{
-            transform: translateY(-5px); box-shadow: var(--shadow-strong); border-color: var(--primary);
-        }
+        .timeline-content:hover{ transform: translateY(-5px); box-shadow: var(--shadow-strong); border-color: var(--primary); }
         .timeline-dot{
             position:absolute; left:50%; transform: translateX(-50%); width:20px; height:20px;
             background: var(--primary); border-radius:50%; border:4px solid var(--bg-dark); z-index:1;
@@ -226,10 +247,8 @@
         .contact-title{ font-size:1.2rem; margin-bottom:10px; position:relative; z-index:1; }
         .contact-text{ color: var(--text-secondary); font-size:.95rem; position:relative; z-index:1; }
 
-        .footer{ text-align:center; padding:40px 20px; border-top:1px solid var(--border); margin-top:100px; }
+        .footer{ text-align:center; padding:40px 20px; border-top:1px solid var(--border); margin-top:100px; position:relative; z-index:1; }
         .footer-text{ color: var(--text-secondary); font-size:.9rem; }
-        .footer-heart{ color: var(--accent); animation: heartbeat 1.5s ease infinite; }
-        @keyframes heartbeat{ 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.1);} }
 
         .mobile-menu-btn{ display:none; background:none; border:none; color: var(--text-primary); font-size:1.5rem; cursor:pointer; }
 
@@ -246,17 +265,14 @@
             .nav-menu.active{ display:flex; }
             .mobile-menu-btn{ display:block; }
             h1{ font-size: 2.5rem; }
-            .hero-buttons{ flex-direction:column; align-items:center; }
-
             .about-content{ grid-template-columns: 1fr; gap:30px; }
-
             .timeline::before{ left:20px; }
             .timeline-item{ flex-direction: column !important; padding-left:50px; }
             .timeline-content{ width:100%; }
             .timeline-dot{ left:20px; }
-
             .projects-grid{ grid-template-columns: 1fr; }
             .contact-grid{ grid-template-columns: 1fr; }
+            .bg-fab{ right: 14px; bottom: 14px; padding: 10px 12px; }
         }
 
         .loader{ position:fixed; inset:0; background: var(--bg-dark); display:flex; align-items:center; justify-content:center; z-index:9999; transition: opacity .5s ease; }
@@ -271,11 +287,11 @@
         ::-webkit-scrollbar-track{ background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb{ background: var(--primary); border-radius:5px; }
         ::-webkit-scrollbar-thumb:hover{ background: var(--primary-dark); }
-    
-    @media (max-width: 480px){
-      .skills-grid{ grid-auto-rows:52px; }
-      .skill-tag{ height:52px; }
-    }
+
+        @media (max-width: 480px){
+            .skills-grid{ grid-auto-rows:52px; }
+            .skill-tag{ height:52px; }
+        }
     </style>
 </head>
 <body>
@@ -286,6 +302,8 @@
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <canvas id="wave-canvas"></canvas>
+
+    <button class="bg-fab" id="bgToggleBtn" type="button" aria-pressed="false">Background: Off</button>
 
     <nav class="nav-header" id="navHeader">
         <div class="nav-content">
@@ -319,18 +337,18 @@
                     <h3>Integrating Analytics, Optimization, and Strategy</h3>
                     <p>
                         I am Hubert Huang, currently studying at National Taiwan University,
-                        majoring in Business Administration, 
+                        majoring in Business Administration,
                         double majoring in Data Science and Computational Finance,
                         and minoring in Computer Science and Information Engineering.
                     </p>
                     <p>
-                        My expertise lies in applying machine learning techniques to data analysis and optimization methods in operations research, 
-                        supported by a solid foundation in statistics. I am also a research assistant at the Institute of Statistical Science, Academia Sinica, 
-                        where my work focuses on machine learning and data science. I have served as a university teaching assistant for Python and completed internships involving 
+                        My expertise lies in applying machine learning techniques to data analysis and optimization methods in operations research,
+                        supported by a solid foundation in theoretical statistics. I am also a research assistant at the Institute of Statistical Science, Academia Sinica,
+                        where my work focuses on machine learning and data science. I have served as a university teaching assistant for Python and completed internships involving
                         large-scale data processing, which further strengthened my programming skills.
                     </p>
                     <p>
-                        I am also adept at teamwork and leadership, having served multiple terms as president and director of student organizations. 
+                        I am also adept at teamwork and leadership, having served multiple terms as president and director of student organizations.
                         These experiences have equipped me with the ability to collaborate effectively with individuals from diverse backgrounds and personalities.
                     </p>
                     <p>
@@ -454,7 +472,7 @@
                     <div class="project-content">
                         <h3 class="project-title">Tainan Parking Space Prediction Model</h3>
                         <p class="project-description">
-                            Tainan Parking Space Prediction Model leverages machine learning models to 
+                            Tainan Parking Space Prediction Model leverages machine learning models to
                             predict the number of available parking spots in specific areas of Tainan using weather forecasts and historical parking usage data.
                         </p>
                         <div class="project-tech">
@@ -480,7 +498,7 @@
                     <div class="project-content">
                         <h3 class="project-title">Python Tutorial - Strings Manipulation</h3>
                         <p class="project-description">
-                            This is a teaching material I created for the NTU Data Analytics Club (NTU DAC). 
+                            This is a teaching material I created for the NTU Data Analytics Club (NTU DAC).
                             It mainly covers basic Python string manipulation and is open for public use.
                         </p>
                         <div class="project-tech">
@@ -506,7 +524,7 @@
                     <div class="project-content">
                         <h3 class="project-title">Real-Time News Summary Platform</h3>
                         <p class="project-description">
-                            Real-Time News Summary Platform is a website that leverages a large language model API 
+                            Real-Time News Summary Platform is a website that leverages a large language model API
                             to fetch, summarize, and categorize real-time news.
                         </p>
                         <div class="project-tech">
@@ -542,7 +560,7 @@
                         <div class="project-links">
                             <a href="https://github.com/HubertHuang2002/Task_Prioritizer" target="_blank" class="project-link" rel="noopener">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                    <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                                    <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.10-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.10 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
                                 </svg>
                                 GitHub
                             </a>
@@ -607,25 +625,33 @@
     </section>
 
     <footer class="footer">
-        <p class="footer-text">
-            © 2025 Hubert Huang
-        </p>
+        <p class="footer-text">© 2025 Hubert Huang</p>
     </footer>
 
     <script>
+        function safeGet(key){
+            try { return localStorage.getItem(key); } catch(e){ return null; }
+        }
+        function safeSet(key, val){
+            try { localStorage.setItem(key, val); } catch(e){}
+        }
+
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
+                const loader = document.getElementById('loader');
+                if (loader) loader.classList.add('hidden');
             }, 500);
         });
 
-        const texts = ['Data Science', 'Statistics', 'Operations Research'];
+        const texts = ['Data Science', 'Theoretical Statistics', 'Operations Research'];
         let textIndex = 0, charIndex = 0, isDeleting = false;
         const typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000;
 
         function typeText() {
-            const currentText = texts[textIndex];
             const typingElement = document.getElementById('typingText');
+            if (!typingElement) return;
+
+            const currentText = texts[textIndex];
 
             if (!isDeleting) {
                 typingElement.textContent = currentText.substring(0, charIndex + 1);
@@ -640,81 +666,141 @@
         }
         typeText();
 
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrolled = (window.scrollY / scrollHeight) * 100;
-            scrollProgress.style.width = scrolled + '%';
-        });
-
-        window.addEventListener('scroll', () => {
-            const navHeader = document.getElementById('navHeader');
-            if (window.scrollY > 50) { navHeader.classList.add('scrolled'); } else { navHeader.classList.remove('scrolled'); }
-        });
-
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
-        window.addEventListener('scroll', () => {
+
+        function updateActiveLink(){
+            if (!sections.length) return;
+
             let current = '';
+            const y = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            if ((y + windowHeight) >= documentHeight - 50) {
+                const lastSection = sections[sections.length - 1];
+                if (lastSection) {
+                    current = lastSection.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === current) link.classList.add('active');
+                    });
+                    return;
+                }
+            }
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (scrollY >= (sectionTop - 200)) { current = section.getAttribute('id'); }
+                if (y >= (sectionTop - 200)) current = section.getAttribute('id');
             });
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) { link.classList.add('active'); }
+                if (link.getAttribute('href').substring(1) === current) link.classList.add('active');
             });
-        });
+        }
+
+        function updateNavHeader(){
+            const navHeader = document.getElementById('navHeader');
+            if (!navHeader) return;
+            if (window.scrollY > 50) navHeader.classList.add('scrolled');
+            else navHeader.classList.remove('scrolled');
+        }
+
+        function updateScrollProgress(){
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (!scrollProgress) return;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+            scrollProgress.style.width = scrolled + '%';
+        }
+
+        let scrollTicking = false;
+        function onScroll(){
+            if (scrollTicking) return;
+            scrollTicking = true;
+            requestAnimationFrame(() => {
+                updateScrollProgress();
+                updateNavHeader();
+                updateActiveLink();
+                scrollTicking = false;
+            });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
 
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
-                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-                document.getElementById('navMenu').classList.remove('active');
+                const target = document.getElementById(targetId);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                const navMenuEl = document.getElementById('navMenu');
+                const mobileMenuBtnEl = document.getElementById('mobileMenuBtn');
+                if (navMenuEl) navMenuEl.classList.remove('active');
+                if (mobileMenuBtnEl) mobileMenuBtnEl.textContent = '☰';
             });
         });
 
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navMenu = document.getElementById('navMenu');
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        if (mobileMenuBtn && navMenu){
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                mobileMenuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }
 
-        document.querySelectorAll('.timeline-item, .project-card').forEach(el => {
-            el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; el.style.transition = 'all .6s ease';
-            observer.observe(el);
-        });
+        const targets = document.querySelectorAll('.timeline-item, .project-card');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            targets.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all .6s ease';
+                observer.observe(el);
+            });
+        } else {
+            targets.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }
 
         const canvas = document.getElementById('wave-canvas');
-        const ctx = canvas.getContext('2d');
-        
+        const bgToggleBtn = document.getElementById('bgToggleBtn');
+        const ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
+        const canWave = !!ctx;
+
         let width, height;
         let points = [];
-        let horizonY = 0; 
-        
+        let horizonY = 0;
+
         const config = {
-            cols: 0,            
-            rows: 0,            
-            spacing: 25,     
-            waveHeight: 60,    
-            speed: 0.00001,    
-            fov: 700,           
-            cameraHeight: 220, 
-            cameraZ: 200      
+            cols: 0,
+            rows: 0,
+            spacing: 25,
+            waveHeight: 60,
+            speed: 0.00001,
+            fov: 700,
+            cameraHeight: 220,
+            cameraZ: 200
         };
 
         let tick = 0;
+        let rafId = null;
+        let animOn = false;
+        let lastFrameTime = 0;
+        const TARGET_FPS = 30;
+        const MIN_FRAME_MS = 1000 / TARGET_FPS;
 
         class Point {
             constructor(x, z) {
@@ -725,21 +811,20 @@
                 this.screenY = 0;
                 this.scale = 0;
             }
-
-            update(tick) {
-                const mainWave = Math.sin(this.x * 0.013 + tick);
-                const secondaryWave = Math.sin(this.z * 0.008 + tick * 0.5);
+            update(t) {
+                const mainWave = Math.sin(this.x * 0.013 + t);
+                const secondaryWave = Math.sin(this.z * 0.008 + t * 0.5);
 
                 this.y = (mainWave + secondaryWave) * 0.5 * config.waveHeight;
 
                 const depth = this.z + config.cameraZ;
                 this.scale = config.fov / (config.fov + depth);
-                
+
                 const gridWidth = config.cols * config.spacing;
-                const offsetX = this.x - gridWidth / 2; 
-                
+                const offsetX = this.x - gridWidth / 2;
+
                 const horizonX = width / 2;
-                
+
                 this.screenX = offsetX * this.scale + horizonX;
                 this.screenY = (this.y + config.cameraHeight) * this.scale + horizonY;
             }
@@ -757,32 +842,34 @@
         }
 
         function resize() {
+            if (!canWave) return;
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
 
-            if (width < 768) {
-                config.spacing = 35; 
-            } else {
-                config.spacing = 25;
-            }
-
+            config.spacing = width < 768 ? 35 : 25;
             horizonY = height * 0.65;
 
-            config.cols = Math.ceil(width / config.spacing) + 20; 
-            
-            config.rows = 60; 
-            
+            config.cols = Math.ceil(width / config.spacing) + 20;
+            config.rows = 60;
+
             init();
         }
 
-        function draw() {
+        function draw(now) {
+            if (!canWave || !animOn) return;
+
+            if (now - lastFrameTime < MIN_FRAME_MS) {
+                rafId = requestAnimationFrame(draw);
+                return;
+            }
+            lastFrameTime = now;
+
             ctx.clearRect(0, 0, width, height);
-            
+
             points.forEach(p => p.update(tick));
 
             for (let i = 0; i < points.length; i++) {
                 const p = points[i];
-                
                 if (p.screenY < horizonY - 50) continue;
 
                 const c = i % config.cols;
@@ -792,10 +879,8 @@
                 const widthRatio = c / config.cols;
 
                 const hue = 210 + (widthRatio * 60);
-                
                 let alpha = (depthRatio * 0.8) + 0.1;
-                
-                if(c < 5 || c > config.cols - 5) alpha *= 0.5;
+                if (c < 5 || c > config.cols - 5) alpha *= 0.5;
 
                 ctx.strokeStyle = `hsla(${hue}, 80%, 60%, ${alpha * 0.5})`;
                 ctx.fillStyle = `hsla(${hue}, 90%, 60%, ${alpha})`;
@@ -826,15 +911,81 @@
             }
 
             tick += config.speed * 1000;
-            requestAnimationFrame(draw);
+            rafId = requestAnimationFrame(draw);
         }
+
+        function updateBgButtonUI(){
+            if (!bgToggleBtn) return;
+            bgToggleBtn.textContent = animOn ? 'Background: On' : 'Background: Off';
+            bgToggleBtn.setAttribute('aria-pressed', animOn ? 'true' : 'false');
+        }
+
+        function startWave(){
+            if (!canWave || animOn) return;
+            animOn = true;
+            document.body.classList.add('bg-anim-on');
+            updateBgButtonUI();
+            if (rafId) cancelAnimationFrame(rafId);
+            lastFrameTime = 0;
+            rafId = requestAnimationFrame(draw);
+            safeSet('bgAnimation', 'on');
+        }
+
+        function stopWave(){
+            if (!canWave || !animOn) return;
+            animOn = false;
+            document.body.classList.remove('bg-anim-on');
+            updateBgButtonUI();
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+            ctx.clearRect(0, 0, width, height);
+            safeSet('bgAnimation', 'off');
+        }
+
+        if (bgToggleBtn){
+            if (!canWave) bgToggleBtn.style.display = 'none';
+            else {
+                bgToggleBtn.addEventListener('click', () => {
+                    animOn ? stopWave() : startWave();
+                });
+            }
+        }
+
+        document.addEventListener('visibilitychange', () => {
+            if (!canWave) return;
+            if (document.hidden) {
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                }
+            } else {
+                if (animOn && !rafId) {
+                    lastFrameTime = 0;
+                    rafId = requestAnimationFrame(draw);
+                }
+            }
+        });
 
         window.addEventListener('resize', () => {
             resize();
+            if (canWave && animOn && !rafId) rafId = requestAnimationFrame(draw);
+            onScroll();
         });
 
-        resize();
-        draw();
+        if (canWave) resize();
+
+        const saved = safeGet('bgAnimation');
+        if (canWave && saved === 'on') startWave();
+        else {
+            animOn = false;
+            document.body.classList.remove('bg-anim-on');
+            updateBgButtonUI();
+            if (canWave) ctx.clearRect(0, 0, width, height);
+        }
+
+        onScroll();
     </script>
 </body>
 </html>
