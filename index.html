@@ -123,30 +123,6 @@
         .nav-link:hover,.nav-link.active{ color: var(--text-primary); }
         .nav-link:hover::after,.nav-link.active::after{ width:100%; }
 
-        .hero{
-            min-height: 100vh; display:flex; align-items:center; justify-content:center;
-            padding: 80px 20px; position: relative; z-index: 1;
-        }
-        .hero-content{ text-align:center; animation: fadeInUp 1s ease; }
-        @keyframes fadeInUp{ from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
-
-        h1{
-            font-size: 3.5rem; margin-bottom: 20px;
-            background: linear-gradient(135deg, #f3f4f6 0%, #9ca3af 50%, #e5e7eb 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            animation: shine 6s ease infinite;
-        }
-        @keyframes shine{
-            0%{ background-position: 0% 50%; }
-            50%{ background-position: 100% 50%; }
-            100%{ background-position: 0% 50%; }
-        }
-
-        .subtitle{ font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 30px; }
-        .typing-effect{ display:inline-block; border-right: 3px solid var(--primary); animation: blink 1s step-end infinite; }
-        @keyframes blink{ 50%{ border-color: transparent; } }
-
         .section{ padding: 100px 0; position: relative; z-index: 1; }
         .section-title{
             font-size: 2.5rem; text-align:center; margin-bottom: 60px; position: relative;
@@ -466,8 +442,7 @@
         <div class="nav-content">
             <div class="logo">Hubert Huang</div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#home" class="nav-link active">About</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -476,14 +451,7 @@
         </div>
     </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Hubert Huang</h1>
-            <p class="subtitle"><span class="typing-effect" id="typingText"></span></p>
-        </div>
-    </section>
-
-    <section class="section" id="about">
+    <section class="section" id="home" style="padding-top: 120px;">
         <div class="container">
             <h2 class="section-title">About</h2>
             <div class="about-container">
@@ -492,16 +460,16 @@
                         <img src="images/profile2.jpg" alt="Hubert Huang">
                     </div>
                     <div class="intro-text">
-                        <h3>Applying Data Science to Real-World Problems</h3>
+                        <h3>Hubert Huang</h3>
                             <p>
-                                I'm Hubert, currently majoring in Data Science in the College of Electrical Engineering and Computer Science at National Taiwan University.
+                                I am currently an M.S. student in Data Science in the College of Electrical Engineering and Computer Science at National Taiwan University.
                             </p>
                             <p>
                                 My research interests include machine learning, data mining, and information retrieval.
                             </p>
                             <p>
-                                In addition, I have strong teamwork and leadership skills, developed through serving multiple terms as both president and director of student organizations.
-                                These experiences have enabled me to collaborate effectively with people from diverse backgrounds and with a wide range of personalities.
+                                In addition, I have developed strong teamwork and leadership skills through multiple terms of service as president and as a director of student organizations.
+                                These experiences have enabled me to collaborate effectively with people from diverse backgrounds and personalities.
                             </p>
                     </div>
                 </div>
@@ -537,31 +505,28 @@
                     <div class="expertise-grid">
                         <div class="expertise-item">
                             <div class="expertise-icon">
-                                <!-- Machine Learning Icon -->
                                 <svg viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M16,11.78L20.24,4.45L21.97,5.45L16.74,14.5L10.23,10.75L5.46,19H22V21H2V3H4V17.54L9.5,8L16,11.78Z"/>
                                 </svg>
                             </div>
                             <div class="expertise-info">
-                                <h4>Machine Learning</h4>                               
+                                <h4>Machine Learning</h4>
                             </div>
                         </div>
 
                         <div class="expertise-item">
                             <div class="expertise-icon">
-                                <!-- Data Mining Icon -->
                                 <svg viewBox="0 0 24 24" aria-hidden="true">
                                     <path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z"/>
                                 </svg>
                             </div>
                             <div class="expertise-info">
-                                <h4>Data Mining</h4>                                
+                                <h4>Data Mining</h4>
                             </div>
                         </div>
 
                         <div class="expertise-item">
                             <div class="expertise-icon">
-                                <!-- Information Retrieval Icon -->
                                 <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <text
                                     x="12" y="12"
@@ -574,7 +539,7 @@
                                 </svg>
                             </div>
                             <div class="expertise-info">
-                                <h4>Information Retrieval</h4>                               
+                                <h4>Information Retrieval</h4>
                             </div>
                         </div>
                     </div>
@@ -887,29 +852,6 @@
                 if (loader) loader.classList.add('hidden');
             }, 500);
         });
-
-        const texts = ['Machine Learning', 'Data Mining', 'Information Retrieval'];
-        let textIndex = 0, charIndex = 0, isDeleting = false;
-        const typingSpeed = 100, deletingSpeed = 50, pauseTime = 2000;
-
-        function typeText() {
-            const typingElement = document.getElementById('typingText');
-            if (!typingElement) return;
-
-            const currentText = texts[textIndex];
-
-            if (!isDeleting) {
-                typingElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-                if (charIndex === currentText.length) { isDeleting = true; setTimeout(typeText, pauseTime); return; }
-            } else {
-                typingElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                if (charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; }
-            }
-            setTimeout(typeText, isDeleting ? deletingSpeed : typingSpeed);
-        }
-        typeText();
 
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
