@@ -710,10 +710,10 @@
 
         const navLinks = document.querySelectorAll('.nav-link');
         const tracked = [
-            { id: 'top', nav: 'top' },
-            { id: 'about', nav: 'top' },
-            { id: 'education', nav: 'top' },
-            { id: 'interests', nav: 'top' },
+            { id: 'top', nav: 'about' },
+            { id: 'about', nav: 'about' },
+            { id: 'education', nav: 'about' },
+            { id: 'interests', nav: 'about' },
             { id: 'experience', nav: 'experience' },
             { id: 'other-experience', nav: 'experience' },
             { id: 'projects', nav: 'projects' },
@@ -721,7 +721,7 @@
         ];
         function updateActive() {
             const scrollPos = window.scrollY + 140;
-            let currentNav = 'top';
+            let currentNav = 'about';
 
             const nearBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 4);
             if (nearBottom) {
