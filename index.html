@@ -14,10 +14,23 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <script>
+        // Set theme before first paint to avoid a flash of the wrong theme
+        (function () {
+            let theme = null;
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
+            color-scheme: light;
             --bg: #ffffff;
             --bg-soft: #f7f7f7;
             --text: #2b2b2b;
@@ -26,10 +39,24 @@
             --accent: #2a5db0;
             --accent-hover: #174a9c;
             --border: #e5e5e5;
+            --shadow: rgba(0, 0, 0, 0.08);
             --max-width: 1240px;
             --sidebar-width: 260px;
             --gap: 64px;
             --header-height: 73px;
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+            --bg: #15181c;
+            --bg-soft: #1e2228;
+            --text: #e8e8e8;
+            --text-soft: #b3b3b3;
+            --text-mute: #8c8c8c;
+            --accent: #7aa9f7;
+            --accent-hover: #9dbffa;
+            --border: #2e343c;
+            --shadow: rgba(0, 0, 0, 0.45);
         }
 
         html { scroll-behavior: smooth; }
@@ -42,6 +69,7 @@
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: background-color .25s ease, color .25s ease;
         }
 
         a {
@@ -103,6 +131,26 @@
             color: var(--text);
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.15rem;
+            cursor: pointer;
+            color: var(--text-soft);
+            padding: 4px;
+            line-height: 1;
+            transition: color .15s ease, transform .2s ease;
+        }
+        .theme-toggle:hover {
+            color: var(--accent);
+            transform: rotate(15deg);
+        }
+
         /* === Two-column Layout === */
         .layout {
             max-width: var(--max-width);
@@ -127,7 +175,7 @@
             object-fit: cover;
             margin: 0 auto 20px;
             display: block;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 12px var(--shadow);
         }
         .profile-name {
             font-family: 'Lora', Georgia, serif;
@@ -378,7 +426,7 @@
                 gap: 0;
                 background: var(--bg);
                 border-bottom: 1px solid var(--border);
-                box-shadow: 0 6px 16px rgba(0,0,0,.06);
+                box-shadow: 0 6px 16px var(--shadow);
             }
             .nav-menu.open { display: flex; }
             .nav-menu li {
@@ -401,15 +449,20 @@
             <div class="site-title">
                 <a href="#about" class="home-link">Hubert Huang</a>
             </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#about" class="nav-link home-link active">Home</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+            <div class="header-actions">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#about" class="nav-link home-link active">Home</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark / light mode" title="Toggle dark / light mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -703,6 +756,34 @@
     </footer>
 
     <script>
+        // Dark / light theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        function syncThemeIcon() {
+            const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+            themeIcon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('theme', next); } catch (e) {}
+            syncThemeIcon();
+        });
+
+        // Follow system preference if the user hasn't chosen manually
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            let saved = null;
+            try { saved = localStorage.getItem('theme'); } catch (err) {}
+            if (!saved) {
+                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                syncThemeIcon();
+            }
+        });
+
+        syncThemeIcon();
+
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
