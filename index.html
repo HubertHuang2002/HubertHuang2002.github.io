@@ -263,7 +263,7 @@
             text-align: center;
         }
 
-        /* === Projects === */
+        /* === Publications === */
         .project-item {
             display: flex;
             gap: 22px;
@@ -294,6 +294,40 @@
             font-weight: 600;
             margin-bottom: 6px;
         }
+        .pub-authors {
+            font-size: .96rem;
+            color: var(--text-soft);
+            margin-bottom: 6px;
+        }
+        .pub-authors .me {
+            color: var(--text);
+            font-weight: 600;
+        }
+        .pub-venue {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 8px;
+            margin-bottom: 10px;
+        }
+        .venue-badge {
+            display: inline-block;
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .3px;
+            color: var(--text-soft);
+            background: #ececec;
+            padding: 2px 9px;
+            border-radius: 4px;
+            line-height: 1.5;
+        }
+        .venue-name {
+            font-size: .92rem;
+            color: var(--text-soft);
+            font-style: italic;
+            line-height: 1.45;
+        }
+
         .project-desc {
             font-size: .98rem;
             color: var(--text-soft);
@@ -313,7 +347,9 @@
         .project-links a {
             font-size: .92rem;
             margin-right: 14px;
+            color: var(--text-soft);
         }
+        .project-links a:hover { color: var(--accent); }
         .project-links i { margin-right: 4px; }
 
         .contact-list {
@@ -322,9 +358,13 @@
         }
         .contact-list li { padding: 6px 0; }
         .contact-list li i {
-            color: var(--accent);
+            color: var(--text-soft);
             width: 22px;
+            transition: color .15s ease;
         }
+        .contact-list li a { color: var(--text-soft); }
+        .contact-list li a:hover { color: var(--accent); }
+        .contact-list li:hover i { color: var(--accent); }
 
         section#contact {
             min-height: calc(100vh - var(--header-height) - 40px);
@@ -407,7 +447,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#about" class="nav-link home-link active">Home</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -469,11 +509,11 @@
                 <h2 class="section-title">Work Experience</h2>
 
                 <div class="entry">
-                    <div class="entry-logo"><img src="images/ntu1.jpeg" alt="Information Retrieval Lab, National Taiwan University"></div>
+                    <div class="entry-logo"><img src="images/philips1.png" alt="Philips"></div>
                     <div class="entry-body">
-                        <div class="entry-title">Research Assistant</div>
-                        <div class="entry-subtitle">Information Retrieval Lab, National Taiwan University</div>
-                        <div class="entry-date">Sep. 2026 - Present</div>
+                        <div class="entry-title">Data Scientist Intern</div>
+                        <div class="entry-subtitle">Philips</div>
+                        <div class="entry-date">Nov. 2026 - Present</div>
                     </div>
                 </div>                
 
@@ -574,75 +614,52 @@
 
             </section>
 
-            <!-- Projects -->
-            <section id="projects">
-                <h2 class="section-title">Projects</h2>
+            <!-- Publications -->
+            <section id="publications">
+                <h2 class="section-title">Publications</h2>
 
                 <div class="project-item">
-                    <div class="project-thumb"><img src="images/project6.png" alt="Mapping Practice Consensus in Framework-Level Stack Overflow Communities"></div>
+                    <div class="project-thumb"><img src="images/BPA1.png" alt="Gauge or Process? Attributing Location Shifts at a Single Inspection Station Using Bridging Re-inspection Pairs"></div>
                     <div class="project-info">
-                        <h3 class="project-name">Mapping Practice Consensus in Framework-Level Stack Overflow Communities</h3>
-                        <p class="project-desc">A RAG-enhanced pipeline that uses LLMs, text mining, and PageRank-based authority signals to analyze and visualize community consensus in Stack Overflow React practices.</p>
+                        <h3 class="project-name">Gauge or Process? Attributing Location Shifts at a Single Inspection Station Using Bridging Re-inspection Pairs</h3>
+                        <p class="pub-authors"><span class="me">Hubert Huang</span></p>
+                        <div class="pub-venue">
+                            <span class="venue-badge">TAAI 2026</span>
+                            <span class="venue-name">International Conference on Technologies and Applications of Artificial Intelligence</span>
+                        </div>
+                        <p class="project-desc">A statistical attribution method that uses items re-inspected across a change point to determine whether a shift in inspection data comes from the measurement gauge or the production process.</p>
                         <div class="project-tags">
-                            <span class="project-tag">RAG (Retrieval-Augmented Generation)</span>
-                            <span class="project-tag">Text Mining</span>
-                            <span class="project-tag">Large Language Model</span>
+                            <span class="project-tag">Statistical Process Control</span>
+                            <span class="project-tag">Measurement System Analysis</span>
+                            <span class="project-tag">Smart Manufacturing</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/HubertHuang2002/Mapping_Practice_Consensus_in_Framework-Level_Stack_Overflow_Communities" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>Code</a>
-                            <a href="https://drive.google.com/file/d/1Py-pvJbWS3Dh6rLx310gwoCeoD2Mf-Ga/view?usp=sharing" target="_blank" rel="noopener"><i class="fa-solid fa-file"></i>Report</a>
+                            <a href="https://drive.google.com/file/d/1VhSit7uG4F2iy8WQEdBaB6vniDm_njSM/view?usp=sharing" target="_blank" rel="noopener"><i class="fa-solid fa-file"></i>Paper</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-item">
-                    <div class="project-thumb"><img src="images/project3.png" alt="Tainan Parking Space Prediction Model"></div>
+                    <div class="project-thumb"><img src="images/SPC-IF1.png" alt="SPC-Augmented Isolation Forest: Unsupervised Window-Level Anomaly Detection for Production Test Measurements with Specification Limits"></div>
                     <div class="project-info">
-                        <h3 class="project-name">Tainan Parking Space Prediction Model</h3>
-                        <p class="project-desc">Machine learning models that predict the number of available parking spots in specific areas of Tainan, leveraging weather forecasts and historical parking usage data.</p>
+                        <h3 class="project-name">SPC-Augmented Isolation Forest: Unsupervised Window-Level Anomaly Detection for Production Test Measurements with Specification Limits</h3>
+                        <p class="pub-authors"><span class="me">Hubert Huang</span></p>
+                        <div class="pub-venue">
+                            <span class="venue-badge">TANET 2026</span>
+                            <span class="venue-name">Taiwan Academic Network Conference</span>
+                        </div>
+                        <p class="project-desc">An unsupervised anomaly detection framework that feeds SPC severity indicators into per-item Isolation Forests to flag abnormal time windows in production test data, with a controllable false-alarm rate and an SPC-based explanation for each alarm.</p>
                         <div class="project-tags">
-                            <span class="project-tag">Deep Learning</span>
-                            <span class="project-tag">Machine Learning</span>
-                            <span class="project-tag">Data Analytics</span>
+                            <span class="project-tag">Unsupervised Learning</span>
+                            <span class="project-tag">Statistical Process Control</span>
+                            <span class="project-tag">Anomaly Detection</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/HubertHuang2002/Tainan_Parking_Space_Prediction_Model" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>Code</a>
-                            <a href="https://drive.google.com/file/d/1QvEfjMdlYaCt-px-ulqjQziU7rIvjnGH/view?usp=sharing" target="_blank" rel="noopener"><i class="fa-solid fa-file"></i>Report</a>
+                            <a href="https://drive.google.com/file/d/1VhSit7uG4F2iy8WQEdBaB6vniDm_njSM/view?usp=sharing" target="_blank" rel="noopener"><i class="fa-solid fa-file"></i>Paper</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-item">
-                    <div class="project-thumb"><img src="images/project4.png" alt="Python Tutorial — String Manipulation"></div>
-                    <div class="project-info">
-                        <h3 class="project-name">Python Tutorial — String Manipulation</h3>
-                        <p class="project-desc">Open teaching material created for the NTU Data Analytics Club (NTUDAC), covering fundamentals of Python string manipulation.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Tutorial</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://youtu.be/oIoXwy9L5Kc?si=zDA7lySmU2ETnGJ-" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i>Video</a>
-                            <a href="https://colab.research.google.com/drive/1WpaVDblU0ep-gUBZdeoWXCzp9MiU11PF?usp=sharing" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i>Colab</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-thumb"><img src="images/project2.png" alt="Real-Time News Summary Platform"></div>
-                    <div class="project-info">
-                        <h3 class="project-name">Real-Time News Summary Platform</h3>
-                        <p class="project-desc">A website that fetches, summarizes, and categorizes real-time news using a large language model API.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Web Programming</span>
-                            <span class="project-tag">Web Scraping</span>
-                            <span class="project-tag">Large Language Model</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/HubertHuang2002/Real-Time_News_Summary_Platform" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>Code</a>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <!-- Contact -->
@@ -695,7 +712,7 @@
             { id: 'interests', nav: 'about' },
             { id: 'experience', nav: 'experience' },
             { id: 'other-experience', nav: 'experience' },
-            { id: 'projects', nav: 'projects' },
+            { id: 'publications', nav: 'publications' },
             { id: 'contact', nav: 'contact' }
         ];
         function updateActive() {
